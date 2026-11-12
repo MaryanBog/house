@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="ru" class="exterior-page">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Конструктор экстерьера — ХАУЗ.БЕЛ</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .exterior-home { display: inline-block; margin-bottom: 12px; color: inherit; text-decoration: underline; text-underline-offset: 4px; }
+        .offer-form { display: grid; gap: 12px; }
+        .offer-form label { display: grid; gap: 4px; }
+        .offer-form input { width: 100%; padding: 10px 12px; border: 1px solid #bbb; border-radius: 8px; }
+        .offer-form .submit-btn { margin: 0; }
+        #offer-close { margin-top: 8px; }
+    </style>
+</head>
+<body>
+
+    <!-- БЛОК ЗАГОЛОВКА (без плашки) -->
+    <section class="hero-section">
+        <a class="exterior-home" href="index.html">← На главную</a>
+        <h1 class="hero-title">
+            Конструктор <span>экстерьера</span>
+        </h1>
+        <p class="hero-subtitle">
+            Выберите цвета кровли, водостока и фасада.
+        </p>
+    </section>
+
+    <!-- ОСНОВНОЙ КОНТЕНТ -->
+    <div class="main-container">
+        <div class="layout">
+            
+            <!-- Левая часть: Большое фото -->
+            <div class="visualization">
+                <img id="house" src="assets/exterior/magnific_modern-twostorey-family-house_eI7cVhqdqL.png" width="2048" height="1143" alt="Дом с серой кровлей, белым водостоком и светлым фасадом">
+            </div>
+
+            <!-- Правая часть: Панель -->
+            <form class="controls finish-panel" aria-labelledby="finish-title">
+                <h2 id="finish-title">Отделка дома</h2>
+                <button type="button" class="design-variants-btn" id="design-variants"
+                        aria-controls="house">Дизайн-варианты <span aria-hidden="true">→</span></button>
+                <fieldset class="finish-group finish-roof">
+                    <legend>Цвет кровли</legend>
+                    <div class="finish-options">
+                        <label class="finish-option">
+                            <input type="radio" name="roof" value="gray" data-label="Серый" checked>
+                            <span class="finish-tile">
+                                <span class="finish-swatch" style="--finish-color: #99938c" aria-hidden="true"></span>
+                                <span>Серый</span>
+                            </span>
+                        </label>
+                        <label class="finish-option">
+                            <input type="radio" name="roof" value="graphite" data-label="Графит">
+                            <span class="finish-tile">
+                                <span class="finish-swatch" style="--finish-color: #454956" aria-hidden="true"></span>
+                                <span>Графит</span>
+                            </span>
+                        </label>
+                        <label class="finish-option">
+                            <input type="radio" name="roof" value="brown" data-label="Шоколад">
+                            <span class="finish-tile">
+                                <span class="finish-swatch" style="--finish-color: #5c4033" aria-hidden="true"></span>
+                                <span>Шоколад</span>
+                            </span>
+                        </label>
+                        <label class="finish-option">
+                            <input type="radio" name="roof" value="terra" data-label="Терракота">
+                            <span class="finish-tile">
+                                <span class="finish-swatch" style="--finish-color: #9e4b47" aria-hidden="true"></span>
+                                <span>Терракота</span>
+                            </span>
+                        </label>
+                    </div>
+                </fieldset>
+                <fieldset class="finish-group finish-drain">
+                    <legend>Цвет водостока</legend>
+                    <div class="finish-options">
+                        <label class="finish-option">
+                            <input type="radio" name="drain" value="gray" data-label="Серый">
+                            <span class="finish-tile">
+                                <span class="finish-swatch" style="--finish-color: #8c9398" aria-hidden="true"></span>
+                                <span>Серый</span>
+                            </span>
+                        </label>
+                        <label class="finish-option">
+                            <input type="radio" name="drain" value="white" data-label="Белый" checked>
+                            <span class="finish-tile">
+                                <span class="finish-swatch" style="--finish-color: #f0f0f0" aria-hidden="true"></span>
+                                <span>Белый</span>
+                            </span>
+                        </label>
+                        <label class="finish-option">
+                            <input type="radio" name="drain" value="brown" data-label="Коричневый">
+                            <span class="finish-tile">
+                                <span class="finish-swatch" style="--finish-color: #5c4033" aria-hidden="true"></span>
+                                <span>Коричневый</span>
+                            </span>
+                        </label>
+                    </div>
+                </fieldset>
+                <fieldset class="finish-group finish-facade">
+                    <legend>Цвет фасада</legend>
+                    <div class="finish-options">
+                        <label class="finish-option">
+                            <input type="radio" name="facade" value="gray" data-label="Серый">
+                            <span class="finish-tile">
+                                <span class="finish-swatch" style="--finish-color: #b0b5b9" aria-hidden="true"></span>
+                                <span>Серый</span>
+                            </span>
+                        </label>
+                        <label class="finish-option">
+                            <input type="radio" name="facade" value="sand" data-label="Песочный">
+                            <span class="finish-tile">
+                                <span class="finish-swatch" style="--finish-color: #d9c5a0" aria-hidden="true"></span>
+                                <span>Песочный</span>
+                            </span>
+                        </label>
+                        <label class="finish-option">
+                            <input type="radio" name="facade" value="white" data-label="Молочный" checked>
+                            <span class="finish-tile">
+                                <span class="finish-swatch" style="--finish-color: #f4ede1" aria-hidden="true"></span>
+                                <span>Молочный</span>
+                            </span>
+                        </label>
+                    </div>
+                </fieldset>
+                <p class="finish-note" id="preview-status" role="status" hidden></p>
+                <button type="submit" class="submit-btn" id="open-estimate">Получить предложение</button>
+            </form>
+        </div>
+    </div>
+
+<dialog id="estimate-dialog" aria-labelledby="estimate-title">
+    <h2 id="estimate-title">Получить предложение</h2>
+    <p id="estimate-selection"></p>
+    <form id="offer-form" class="offer-form">
+        <label>Телефон
+            <input name="phone" type="tel" autocomplete="tel" maxlength="32" required autofocus>
+        </label>
+        <label>Электронная почта
+            <input name="email" type="email" autocomplete="email" maxlength="254" required>
+        </label>
+        <button class="submit-btn" type="submit">Отправить заявку</button>
+    </form>
+    <p id="offer-status" role="status" hidden></p>
+    <form method="dialog"><button id="offer-close" type="submit">Закрыть</button></form>
+</dialog>
+
+<script>
+    const panel = document.querySelector('.finish-panel');
+    const photo = document.getElementById('house');
+    const previewStatus = document.getElementById('preview-status');
+    const estimate = document.getElementById('estimate-dialog');
+    const estimateSelection = document.getElementById('estimate-selection');
+    const groupNames = ['roof', 'drain', 'facade'];
+    const original = {
+        src: photo.getAttribute('src'),
+        alt: 'Дом с серой кровлей, белым водостоком и светлым фасадом'
+    };
+    // Ключ фото: кровля / водосток / фасад.
+    const photos = {
+        'gray/white/white': original,
+        'graphite/white/white': {
+            src: 'assets/exterior/magnific_modern-twostorey-family-house_u5zDeGGQLD.png',
+            alt: 'Дом с графитовой кровлей, белым водостоком и светлым фасадом'
+        },
+        'brown/white/white': {
+            src: 'assets/exterior/magnific_modern-twostorey-family-house_5jTozyoKxe.png',
+            alt: 'Дом с шоколадной кровлей, белым водостоком и светлым фасадом'
+        },
+        'terra/white/white': {
+            src: 'assets/exterior/magnific_modern-twostorey-family-house_Xmy2tD2Bfo.png',
+            alt: 'Дом с терракотовой кровлей, белым водостоком и светлым фасадом'
+        },
+        'gray/gray/white': {
+            src: 'assets/exterior/magnific_modern-twostorey-family-house_aFZTpoOfSh.png',
+            alt: 'Дом с серой кровлей, серым водостоком и светлым фасадом'
+        },
+        'graphite/gray/white': {
+            src: 'assets/exterior/magnific_modern-twostorey-family-house_VXSN2GyMMU.png',
+            alt: 'Дом с графитовой кровлей, серым водостоком и светлым фасадом'
+        },
+        'brown/gray/white': {
+            src: 'assets/exterior/magnific_modern-twostorey-family-house_SyIQLyrUb8.png',
+            alt: 'Дом с шоколадной кровлей, серым водостоком и светлым фасадом'
+        },
+        'terra/gray/white': {
+            src: 'assets/exterior/magnific_modern-twostorey-family-house_9ZuryCzNYZ.png',
+            alt: 'Дом с терракотовой кровлей, серым водостоком и светлым фасадом'
+        },
+        'gray/brown/white': {
+            src: 'assets/exterior/roof-gray-gutter-brown.png',
+            alt: 'Дом с серой кровлей, коричневым водостоком и светлым фасадом'
+        },
+        'graphite/brown/white': {
+            src: 'assets/exterior/roof-graphite-gutter-brown.png',
+            alt: 'Дом с графитовой кровлей, коричневым водостоком и светлым фасадом'
+        },
+        'brown/brown/white': {
+            src: 'assets/exterior/roof-chocolate-gutter-brown.png',
+            alt: 'Дом с шоколадной кровлей, коричневым водостоком и светлым фасадом'
+        },
+        'terra/brown/white': {
+            src: 'assets/exterior/roof-terracotta-gutter-brown.png',
+            alt: 'Дом с терракотовой кровлей, коричневым водостоком и светлым фасадом'
+        },
+        'gray/white/sand': {
+            src: 'assets/exterior/magnific_modern-twostorey-family-house_4RExQY49Aa.png',
+            alt: 'Дом с серой кровлей, белым водостоком и песочным фасадом'
+        },
+        'gray/gray/sand': {
+            src: 'assets/exterior/magnific_modern-twostorey-family-house_BhPzspCoQR.png',
+            alt: 'Дом с серой кровлей, серым водостоком и песочным фасадом'
+        },
+        'gray/brown/sand': {
+            src: 'assets/exterior/magnific_modern-twostorey-family-house_WDL4yiUcXe.png',
+            alt: 'Дом с серой кровлей, коричневым водостоком и песочным фасадом'
+        },
+        'graphite/white/sand': {
+            src: 'assets/exterior/magnific_modern-twostorey-family-house_xSefBH7jfW.png',
+            alt: 'Дом с графитовой кровлей, белым водостоком и песочным фасадом'
+        },
+        'graphite/gray/sand': {
+            src: 'assets/exterior/magnific_modern-twostorey-family-house_gO8FMMXSXO.png',
+            alt: 'Дом с графитовой кровлей, серым водостоком и песочным фасадом'
+        },
+        'graphite/brown/sand': {
+            src: 'assets/exterior/magnific_modern-twostorey-family-house_LwXEC1JswO.png',
+            alt: 'Дом с графитовой кровлей, коричневым водостоком и песочным фасадом'
+        },
+        'brown/white/sand': {
+            src: 'assets/exterior/magnific_modern-twostorey-family-house_JNvKEjMOq4.png',
+            alt: 'Дом с шоколадной кровлей, белым водостоком и песочным фасадом'
+        },
+        'brown/gray/sand': {
+            src: 'assets/exterior/magnific_modern-twostorey-family-house_nVxyqnCYQD.png',
+            alt: 'Дом с шоколадной кровлей, серым водостоком и песочным фасадом'
+        },
+        'brown/brown/sand': {
+            src: 'assets/exterior/magnific_modern-twostorey-family-house_SyIHHjxUb8.png',
+            alt: 'Дом с шоколадной кровлей, коричневым водостоком и песочным фасадом'
+        },
+        'terra/white/sand': {
+            src: 'assets/exterior/magnific_modern-twostorey-family-house_iGHlkOC3uK.png',
+            alt: 'Дом с терракотовой кровлей, белым водостоком и песочным фасадом'
+        },
+        'terra/gray/sand': {
+            src: 'assets/exterior/magnific_modern-twostorey-family-house_O6akIKRynm.png',
+            alt: 'Дом с терракотовой кровлей, серым водостоком и песочным фасадом'
+        },
+        'terra/brown/sand': {
+            src: 'assets/exterior/magnific_modern-twostorey-family-house_rgpafHUxtc.png',
+            alt: 'Дом с терракотовой кровлей, коричневым водостоком и песочным фасадом'
+        },
+        'gray/gray/gray': {
+            src: 'assets/exterior/magnific_modern-twostorey-family-house_MBURTemDCm.png',
+            alt: 'Дом с серой кровлей, серым водостоком и серым фасадом'
+        },
+        'gray/white/gray': {
+            src: 'assets/exterior/magnific_modern-twostorey-family-house_xSeEls5jfW.png',
+            alt: 'Дом с серой кровлей, белым водостоком и серым фасадом'
+        },
+        'gray/brown/gray': {
+            src: 'assets/exterior/magnific_modern-twostorey-family-house_gO8qVHISXO.png',
+            alt: 'Дом с серой кровлей, коричневым водостоком и серым фасадом'
+        },
+        'graphite/white/gray': {
+            src: 'assets/exterior/magnific_modern-twostorey-family-house_dtOzbn7XSL.png',
+            alt: 'Дом с графитовой кровлей, белым водостоком и серым фасадом'
+        },
+        'graphite/gray/gray': {
+            src: 'assets/exterior/magnific_modern-twostorey-family-house_KLVvlUykqp.png',
+            alt: 'Дом с графитовой кровлей, серым водостоком и серым фасадом'
+        },
+        'graphite/brown/gray': {
+            src: 'assets/exterior/magnific_modern-twostorey-family-house_mEiVOqahJQ.png',
+            alt: 'Дом с графитовой кровлей, коричневым водостоком и серым фасадом'
+        },
+        'brown/white/gray': {
+            src: 'assets/exterior/magnific_modern-twostorey-family-house_lJoHzDlgv9.png',
+            alt: 'Дом с шоколадной кровлей, белым водостоком и серым фасадом'
+        },
+        'brown/gray/gray': {
+            src: 'assets/exterior/magnific_modern-twostorey-family-house_3zqUc6pREY.png',
+            alt: 'Дом с шоколадной кровлей, серым водостоком и серым фасадом'
+        },
+        'brown/brown/gray': {
+            src: 'assets/exterior/magnific_modern-twostorey-family-house_6AFgfWtiJO.png',
+            alt: 'Дом с шоколадной кровлей, коричневым водостоком и серым фасадом'
+        },
+        'terra/white/gray': {
+            src: 'assets/exterior/magnific_modern-twostorey-family-house_iGHS8Ev3uK.png',
+            alt: 'Дом с терракотовой кровлей, белым водостоком и серым фасадом'
+        },
+        'terra/gray/gray': {
+            src: 'assets/exterior/magnific_modern-twostorey-family-house_SyIb6lIUb8.png',
+            alt: 'Дом с терракотовой кровлей, серым водостоком и серым фасадом'
+        },
+        'terra/brown/gray': {
+            src: 'assets/exterior/magnific_modern-twostorey-family-house_jUduMfnLD0.png',
+            alt: 'Дом с терракотовой кровлей, коричневым водостоком и серым фасадом'
+        }
+    };
+
+    function selectedColors() {
+        return groupNames.map(name => panel.querySelector('input[name="' + name + '"]:checked'));
+    }
+
+    function updatePreview() {
+        const key = selectedColors().map(input => input.value).join('/');
+        const match = photos[key];
+        const preview = match || original;
+        photo.src = preview.src;
+        photo.alt = preview.alt;
+        previewStatus.hidden = Boolean(match);
+        previewStatus.textContent = match
+            ? ''
+            : 'Фото для этого сочетания пока нет. Показан исходный вариант.';
+    }
+
+    const designButton = document.getElementById('design-variants');
+    let designNumber = 0;
+    let designRequest = 0;
+    let designLoading = false;
+
+    function loadDesign(number) {
+        return new Promise(resolve => {
+            const image = new Image();
+            image.onload = () => resolve(image);
+            image.onerror = () => resolve(null);
+            image.src = 'assets/exterior/design/' + number + '.png';
+        });
+    }
+
+    designButton.addEventListener('click', async () => {
+        if (designLoading) return;
+        designLoading = true;
+        const request = ++designRequest;
+        let number = designNumber + 1;
+        let image = await loadDesign(number);
+        if (!image && number > 1 && request === designRequest) {
+            number = 1;
+            image = await loadDesign(number);
+        }
+        if (request !== designRequest) return;
+        designLoading = false;
+        if (!image) return;
+
+        designNumber = number;
+        photo.src = image.src;
+        photo.alt = 'Дизайн-вариант ' + number;
+    });
+
+    panel.addEventListener('change', () => {
+        designRequest += 1;
+        designLoading = false;
+        designNumber = 0;
+        updatePreview();
+    });
+    const offerForm = document.getElementById('offer-form');
+    const offerSubmit = offerForm.querySelector('button[type="submit"]');
+    const offerStatus = document.getElementById('offer-status');
+    let offerSelection;
+
+    panel.addEventListener('submit', event => {
+        event.preventDefault();
+        const inputs = selectedColors();
+        offerSelection = {
+            image: photo.getAttribute('src'),
+            variant: designNumber ? 'design/' + designNumber : inputs.map(input => input.value).join('/')
+        };
+        estimateSelection.textContent = designNumber
+            ? 'Дизайн-вариант ' + designNumber
+            : inputs.map(input => {
+                const title = input.closest('fieldset').querySelector('legend').textContent;
+                return title + ' — ' + input.dataset.label;
+            }).join(' · ');
+        offerStatus.hidden = true;
+        offerSubmit.disabled = false;
+        estimate.showModal();
+    });
+
+    estimate.addEventListener('cancel', event => {
+        if (offerSubmit.disabled && estimate.querySelector('#offer-close').disabled) event.preventDefault();
+    });
+
+    offerForm.addEventListener('submit', async event => {
+        event.preventDefault();
+        const details = Object.fromEntries(new FormData(offerForm));
+        const closeButton = document.getElementById('offer-close');
+        offerSubmit.disabled = true;
+        closeButton.disabled = true;
+        offerStatus.hidden = false;
+        offerStatus.textContent = 'Отправляем письмо…';
+        try {
+            const response = await fetch('/api/exterior-offer', {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify({...offerSelection, ...details})
+            });
+            const result = await response.json();
+            if (!response.ok || result.ok !== true) throw new Error(result.error);
+            offerForm.reset();
+            offerStatus.textContent = 'Письмо с выбранным фото отправлено.';
+        } catch (error) {
+            offerStatus.textContent = error.message === 'rate_limit'
+                ? 'Слишком много заявок. Попробуйте позже.'
+                : 'Не удалось отправить заявку. Попробуйте позже.';
+            offerSubmit.disabled = false;
+        } finally {
+            closeButton.disabled = false;
+        }
+    });
+
+    updatePreview();
+</script>
+</body>
+</html>
