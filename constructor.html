@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="ru" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Интерьерный конструктор — ХАУЗ.БЕЛ</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="interior-page min-h-screen flex flex-col">
+
+    <!-- MAIN CONSTRUCTOR SECTION ONLY (БЕЗ ХЕДЕРА И ФУТЕРА) -->
+    <main class="py-8 flex-grow max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8">
+        
+        <div class="wizard-intro text-center max-w-3xl mx-auto mb-8">
+
+            <h1 class="text-3xl sm:text-5xl font-black text-charcoal tracking-tight leading-tight">
+                Красивый выбор <span class="text-house-orange">без сложности</span>
+            </h1>
+            <p class="text-charcoal/70 text-sm sm:text-base mt-3 font-roboto">
+                Выберите комнату и стиль. Посмотрите сочетания обоев и ламината для выбранного стиля.
+            </p>
+        </div>
+
+        <div class="bg-white rounded-3xl shadow-xl border border-gray-200/80 overflow-hidden">
+            
+            <div class="wizard-header bg-charcoal text-white p-6 sm:p-8 border-b border-gray-800">
+                <div class="flex flex-col md:flex-row md:items-center justify-between gap-6">
+                    <div>
+                        <span class="text-xs font-montserrat font-bold text-house-orange uppercase tracking-widest block mb-1">Интерактивный подбор</span>
+                        <h2 class="text-xl sm:text-2xl font-bold font-montserrat" id="stepMainTitle">Шаг 1. Для какого помещения подбираем?</h2>
+                    </div>
+
+                    <div class="flex items-center gap-3">
+                        <div class="flex items-center gap-2 bg-charcoal-dark px-4 py-2 rounded-2xl border border-gray-700">
+                            <span id="stepNum1" class="w-7 h-7 rounded-xl bg-house-orange text-white font-montserrat font-bold text-xs flex items-center justify-center">1</span>
+                            <span class="text-xs font-montserrat font-bold hidden sm:inline">Помещение</span>
+                        </div>
+                        <i class="fa-solid fa-chevron-right text-gray-600 text-xs"></i>
+                        <div class="flex items-center gap-2 bg-charcoal-dark px-4 py-2 rounded-2xl border border-gray-700">
+                            <span id="stepNum2" class="w-7 h-7 rounded-xl bg-gray-700 text-gray-300 font-montserrat font-bold text-xs flex items-center justify-center">2</span>
+                            <span class="text-xs font-montserrat font-bold hidden sm:inline">Стиль</span>
+                        </div>
+                        <i class="fa-solid fa-chevron-right text-gray-600 text-xs"></i>
+                        <div class="flex items-center gap-2 bg-charcoal-dark px-4 py-2 rounded-2xl border border-gray-700">
+                            <span id="stepNum3" class="w-7 h-7 rounded-xl bg-gray-700 text-gray-300 font-montserrat font-bold text-xs flex items-center justify-center">3</span>
+                            <span class="text-xs font-montserrat font-bold hidden sm:inline">Результат</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="wizard-content p-6 sm:p-10">
+                
+                <!-- STEP 1 -->
+                <div id="step1" class="tab-content space-y-8">
+                    <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
+                        
+                        <label class="option-card cursor-pointer">
+                            <input type="radio" name="room" value="living" class="sr-only" checked onchange="selectRoom('living', 'Гостиная')">
+                            <div class="bg-warm-card p-6 rounded-2xl border-2 border-gray-200 hover:border-gray-400 transition-all text-center relative group h-full flex flex-col justify-between items-center">
+                                <div class="check-badge absolute top-3 right-3 w-6 h-6 rounded-full bg-house-orange text-white text-xs flex items-center justify-center opacity-0 scale-75 transition-all">
+                                    <i class="fa-solid fa-check"></i>
+                                </div>
+                                <div class="icon-box w-16 h-16 rounded-2xl bg-white shadow-sm text-charcoal text-2xl flex items-center justify-center mb-4 transition-all">
+                                    <i class="fa-solid fa-couch"></i>
+                                </div>
+                                <div>
+                                    <h3 class="font-montserrat font-bold text-base text-charcoal mb-1">Гостиная</h3>
+                                    <p class="text-xs text-charcoal/60 font-roboto">Пространство для всей семьи и гостей</p>
+                                </div>
+                            </div>
+                        </label>
+
+                        <label class="option-card cursor-pointer">
+                            <input type="radio" name="room" value="bedroom" class="sr-only" onchange="selectRoom('bedroom', 'Спальня')">
+                            <div class="bg-warm-card p-6 rounded-2xl border-2 border-gray-200 hover:border-gray-400 transition-all text-center relative group h-full flex flex-col justify-between items-center">
+                                <div class="check-badge absolute top-3 right-3 w-6 h-6 rounded-full bg-house-orange text-white text-xs flex items-center justify-center opacity-0 scale-75 transition-all">
+                                    <i class="fa-solid fa-check"></i>
+                                </div>
+                                <div class="icon-box w-16 h-16 rounded-2xl bg-white shadow-sm text-charcoal text-2xl flex items-center justify-center mb-4 transition-all">
+                                    <i class="fa-solid fa-bed"></i>
+                                </div>
+                                <div>
+                                    <h3 class="font-montserrat font-bold text-base text-charcoal mb-1">Спальня</h3>
+                                    <p class="text-xs text-charcoal/60 font-roboto">Уют, тишина и мягкие природные тона</p>
+                                </div>
+                            </div>
+                        </label>
+
+                        <label class="option-card cursor-pointer">
+                            <input type="radio" name="room" value="hallway" class="sr-only" onchange="selectRoom('hallway', 'Прихожая')">
+                            <div class="bg-warm-card p-6 rounded-2xl border-2 border-gray-200 hover:border-gray-400 transition-all text-center relative group h-full flex flex-col justify-between items-center">
+                                <div class="check-badge absolute top-3 right-3 w-6 h-6 rounded-full bg-house-orange text-white text-xs flex items-center justify-center opacity-0 scale-75 transition-all">
+                                    <i class="fa-solid fa-check"></i>
+                                </div>
+                                <div class="icon-box w-16 h-16 rounded-2xl bg-white shadow-sm text-charcoal text-2xl flex items-center justify-center mb-4 transition-all">
+                                    <i class="fa-solid fa-door-open"></i>
+                                </div>
+                                <div>
+                                    <h3 class="font-montserrat font-bold text-base text-charcoal mb-1">Прихожая</h3>
+                                    <p class="text-xs text-charcoal/60 font-roboto">Максимальная стойкость к влаге и трению</p>
+                                </div>
+                            </div>
+                        </label>
+
+                        <label class="option-card cursor-pointer">
+                            <input type="radio" name="room" value="kitchen" class="sr-only" onchange="selectRoom('kitchen', 'Кухня')">
+                            <div class="bg-warm-card p-6 rounded-2xl border-2 border-gray-200 hover:border-gray-400 transition-all text-center relative group h-full flex flex-col justify-between items-center">
+                                <div class="check-badge absolute top-3 right-3 w-6 h-6 rounded-full bg-house-orange text-white text-xs flex items-center justify-center opacity-0 scale-75 transition-all">
+                                    <i class="fa-solid fa-check"></i>
+                                </div>
+                                <div class="icon-box w-16 h-16 rounded-2xl bg-white shadow-sm text-charcoal text-2xl flex items-center justify-center mb-4 transition-all">
+                                    <i class="fa-solid fa-kitchen-set"></i>
+                                </div>
+                                <div>
+                                    <h3 class="font-montserrat font-bold text-base text-charcoal mb-1">Кухня</h3>
+                                    <p class="text-xs text-charcoal/60 font-roboto">Практичные моющиеся фактуры</p>
+                                </div>
+                            </div>
+                        </label>
+
+                    </div>
+
+                    <div class="wizard-actions border-t border-gray-100">
+                        <a href="index.html" class="wizard-back border border-charcoal text-charcoal font-montserrat font-bold text-xs uppercase rounded-xl">
+                            <i class="fa-solid fa-arrow-left" aria-hidden="true"></i> На главную
+                        </a>
+                        <button onclick="goToStep(2)" class="wizard-primary font-montserrat font-bold text-xs uppercase tracking-widest px-8 py-4 rounded-xl shadow-glow-orange transition-all flex items-center gap-3">
+                            Выбрать стиль <i class="fa-solid fa-arrow-right"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- STEP 2 -->
+                <div id="step2" class="tab-content hidden">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
+                        
+                        <label class="option-card cursor-pointer">
+                            <input type="radio" name="style" value="minimal" class="sr-only" checked onchange="selectStyle('minimal', 'Светлый минимализм')">
+                            <div class="bg-warm-card p-6 rounded-2xl border-2 border-gray-200 hover:border-gray-400 transition-all relative group h-full flex flex-col justify-between">
+                                <div class="check-badge absolute top-3 right-3 w-6 h-6 rounded-full bg-house-orange text-white text-xs flex items-center justify-center opacity-0 scale-75 transition-all z-10">
+                                    <i class="fa-solid fa-check"></i>
+                                </div>
+                                <div class="style-preview w-full rounded-xl overflow-hidden">
+                                    <img src="https://images.unsplash.com/photo-1598928506311-c55ded91a20c?auto=format&fit=crop&w=500&q=80" alt="" onerror="this.hidden = true" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                                </div>
+                                <div>
+                                    <h3 class="font-montserrat font-bold text-base text-charcoal mb-1">Светлый минимализм</h3>
+                                    <p class="text-xs text-charcoal/60 font-roboto">Много света, бежево-серые оттенки, выбеленный дуб</p>
+                                </div>
+                            </div>
+                        </label>
+
+                        <label class="option-card cursor-pointer">
+                            <input type="radio" name="style" value="cozy" class="sr-only" onchange="selectStyle('cozy', 'Теплый уют')">
+                            <div class="bg-warm-card p-6 rounded-2xl border-2 border-gray-200 hover:border-gray-400 transition-all relative group h-full flex flex-col justify-between">
+                                <div class="check-badge absolute top-3 right-3 w-6 h-6 rounded-full bg-house-orange text-white text-xs flex items-center justify-center opacity-0 scale-75 transition-all z-10">
+                                    <i class="fa-solid fa-check"></i>
+                                </div>
+                                <div class="style-preview w-full rounded-xl overflow-hidden">
+                                    <img src="https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?auto=format&fit=crop&w=500&q=80" alt="" onerror="this.hidden = true" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                                </div>
+                                <div>
+                                    <h3 class="font-montserrat font-bold text-base text-charcoal mb-1">Теплый уют</h3>
+                                    <p class="text-xs text-charcoal/60 font-roboto">Натуральное дерево, текстильные фактуры обоев</p>
+                                </div>
+                            </div>
+                        </label>
+
+                        <label class="option-card cursor-pointer">
+                            <input type="radio" name="style" value="loft" class="sr-only" onchange="selectStyle('loft', 'Современный графит')">
+                            <div class="bg-warm-card p-6 rounded-2xl border-2 border-gray-200 hover:border-gray-400 transition-all relative group h-full flex flex-col justify-between">
+                                <div class="check-badge absolute top-3 right-3 w-6 h-6 rounded-full bg-house-orange text-white text-xs flex items-center justify-center opacity-0 scale-75 transition-all z-10">
+                                    <i class="fa-solid fa-check"></i>
+                                </div>
+                                <div class="style-preview w-full rounded-xl overflow-hidden">
+                                    <img src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=1000&q=80" alt="" onerror="this.hidden = true" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                                </div>
+                                <div>
+                                    <h3 class="font-montserrat font-bold text-base text-charcoal mb-1">Современный графит</h3>
+                                    <p class="text-xs text-charcoal/60 font-roboto">Глубокие темно-серые акценты и выраженная текстура</p>
+                                </div>
+                            </div>
+                        </label>
+
+                        <label class="option-card cursor-pointer">
+                            <input type="radio" name="style" value="eco" class="sr-only" onchange="selectStyle('eco', 'Эко-стиль')">
+                            <div class="bg-warm-card p-6 rounded-2xl border-2 border-gray-200 hover:border-gray-400 transition-all relative group h-full flex flex-col justify-between">
+                                <div class="check-badge absolute top-3 right-3 w-6 h-6 rounded-full bg-house-orange text-white text-xs flex items-center justify-center opacity-0 scale-75 transition-all z-10">
+                                    <i class="fa-solid fa-check"></i>
+                                </div>
+                                <div class="style-preview w-full rounded-xl overflow-hidden">
+                                    <img src="https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=500&q=80" alt="" onerror="this.hidden = true" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                                </div>
+                                <div>
+                                    <h3 class="font-montserrat font-bold text-base text-charcoal mb-1">Эко-стиль</h3>
+                                    <p class="text-xs text-charcoal/60 font-roboto">Природные растительные орнаменты и дубовая доска</p>
+                                </div>
+                            </div>
+                        </label>
+
+                    </div>
+
+                    <div class="wizard-actions border-t border-gray-100">
+                        <button onclick="goToStep(1)" class="wizard-back border border-charcoal text-charcoal font-montserrat font-bold text-xs uppercase rounded-xl">
+                            <i class="fa-solid fa-arrow-left mr-2"></i> Назад
+                        </button>
+                        <button onclick="generateMatch()" class="wizard-primary font-montserrat font-bold text-xs uppercase tracking-widest px-8 py-4 rounded-xl shadow-glow-orange transition-all flex items-center gap-3">
+                            Показать результат <i class="fa-solid fa-wand-magic-sparkles"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- STEP 3 -->
+                <div id="step3" data-result-style="minimal" class="tab-content hidden space-y-8">
+                    
+                    <div class="bg-warm-card p-4 rounded-2xl border border-gray-200 flex flex-wrap items-center justify-between gap-4">
+                        <div class="flex items-center gap-4 text-xs font-montserrat font-bold text-charcoal uppercase">
+                            <span><i class="fa-solid fa-house text-house-orange mr-1.5"></i> <span id="resRoomText">Гостиная</span></span>
+                            <span class="text-gray-300">•</span>
+                            <span><i class="fa-solid fa-palette text-house-orange mr-1.5"></i> <span id="resStyleText">Светлый минимализм</span></span>
+                        </div>
+                        <button onclick="goToStep(1)" class="text-xs font-montserrat font-bold text-house-orange hover:underline uppercase">
+                            Изменить параметры
+                        </button>
+                    </div>
+
+                    <p class="text-sm">Иллюстрации оттенков и фактур. Наличие образцов уточняйте в магазине.</p>
+                    <div class="grid lg:grid-cols-12 gap-8 items-stretch">
+                        
+                        <div class="lg:col-span-5 bg-white rounded-3xl p-6 border-2 border-gray-200 hover:border-house-orange transition-all shadow-soft flex flex-col justify-between">
+                            <div>
+                                <div class="flex justify-between items-center mb-3">
+                                    <span class="bg-charcoal text-white text-[10px] font-montserrat font-bold uppercase px-3 py-1 rounded-full">
+                                        Стены • Обои
+                                    </span>
+                                </div>
+
+                                <figure class="result-sample result-sample-wall">
+                                    <div class="result-texture" aria-hidden="true"></div>
+                                    <figcaption>Пример фактуры</figcaption>
+                                </figure>
+
+                                <h3 class="font-montserrat font-bold text-xl text-charcoal mb-2" id="wpName">Светлые обои с льняной фактурой</h3>
+                            </div>
+
+                            
+                        </div>
+
+                        <div class="lg:col-span-2 flex flex-col items-center justify-center py-4">
+                            <div class="w-14 h-14 rounded-full bg-house-orange text-white text-2xl font-black flex items-center justify-center shadow-glow-orange">
+                                +
+                            </div>
+                            <span class="font-montserrat font-bold text-xs uppercase tracking-wider text-charcoal mt-3 text-center">
+                                Сочетание материалов
+                            </span>
+                        </div>
+
+                        <div class="lg:col-span-5 bg-white rounded-3xl p-6 border-2 border-gray-200 hover:border-house-orange transition-all shadow-soft flex flex-col justify-between">
+                            <div>
+                                <div class="flex justify-between items-center mb-3">
+                                    <span class="bg-charcoal text-white text-[10px] font-montserrat font-bold uppercase px-3 py-1 rounded-full">
+                                        Пол • Ламинат
+                                    </span>
+                                </div>
+
+                                <figure class="result-sample result-sample-floor">
+                                    <div class="result-texture" aria-hidden="true"></div>
+                                    <figcaption>Пример фактуры</figcaption>
+                                </figure>
+
+                                <h3 class="font-montserrat font-bold text-xl text-charcoal mb-2" id="lamName">Выбеленный дуб</h3>
+                            </div>
+
+                            
+                        </div>
+
+                    </div>
+
+                    <div class="bg-charcoal text-white p-6 sm:p-8 rounded-3xl relative overflow-hidden border border-gray-800">
+                        <div class="flex items-start gap-4 relative z-10">
+                            <div class="w-12 h-12 rounded-2xl bg-house-orange text-white text-xl flex items-center justify-center shrink-0 shadow-glow-orange">
+                                <i class="fa-solid fa-lightbulb"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-montserrat font-bold text-base mb-1 text-white">Почему материалы сочетаются?</h4>
+                                <p class="text-xs sm:text-sm text-gray-300 font-roboto leading-relaxed" id="designerNote">
+                                    Светлые обои визуально расширяют комнату, а ламинат с древесной текстурой создает устойчивый тепловой акцент. Освещение подчеркнет объем тиснения обоев.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="result-actions">
+                        <a href="tel:+375293979772" class="contact-link">Уточнить наличие образцов</a>
+                        <button onclick="goToStep(2)" class="border border-charcoal text-charcoal hover:bg-charcoal hover:text-white font-montserrat font-bold text-xs uppercase px-6 py-3 rounded-xl transition-all">
+                            <i class="fa-solid fa-arrow-left mr-2"></i> Попробовать другой стиль
+                        </button>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </main>
+
+        <!-- SCRIPT -->
+    <script>
+        let selectedState = { roomKey: 'living', roomName: 'Гостиная', styleKey: 'minimal', styleName: 'Светлый минимализм' };
+
+        function selectRoom(key, name) { selectedState.roomKey = key; selectedState.roomName = name; }
+        function selectStyle(key, name) { selectedState.styleKey = key; selectedState.styleName = name; }
+
+        function goToStep(step) {
+            document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
+            document.getElementById(`step${step}`).classList.remove('hidden');
+
+            const titles = { 1: 'Шаг 1. Для какого помещения подбираем?', 2: 'Шаг 2. Какой стиль интерьера вам ближе?', 3: 'Шаг 3. Ваша готовая интерьерная пара' };
+            document.getElementById('stepMainTitle').innerText = titles[step];
+
+            for (let i = 1; i <= 3; i++) {
+                const numEl = document.getElementById(`stepNum${i}`);
+                if (i === step) numEl.className = 'w-7 h-7 rounded-xl bg-house-orange text-white font-montserrat font-bold text-xs flex items-center justify-center';
+                else if (i < step) numEl.className = 'w-7 h-7 rounded-xl bg-green-600 text-white font-montserrat font-bold text-xs flex items-center justify-center';
+                else numEl.className = 'w-7 h-7 rounded-xl bg-gray-700 text-gray-300 font-montserrat font-bold text-xs flex items-center justify-center';
+            }
+        }
+
+        const palettes = {
+            minimal: ['Светлые обои с льняной фактурой', 'Выбеленный дуб', 'Выбеленный дуб отражает дневной свет, а льняная фактура добавляет стенам тепла.'],
+            cozy: ['Тёплые бежевые обои', 'Медовый дуб', 'Тёплые полутона стен и пола хорошо смотрятся при мягком освещении.'],
+            loft: ['Светло-серые обои', 'Тёмный орех', 'Тёмный пол подчёркивает светлые стены. Повторите цвет пола в деталях интерьера.'],
+            eco: ['Обои с льняной фактурой', 'Натуральный дуб', 'Матовые стены и выраженный рисунок дерева дополняют друг друга.']
+        };
+
+        const roomNotes = {
+            living: 'Сравните образцы у окна и при вечернем освещении.',
+            bedroom: 'Проверьте оттенки при освещении, которым пользуетесь вечером.',
+            hallway: 'Для прихожей проверьте устойчивость покрытия к истиранию и мокрой обуви.',
+            kitchen: 'Уточните влагостойкость ламината и пригодность обоев для влажной уборки.'
+        };
+
+        function generateMatch() {
+            const [wallpaper, laminate, advice] = palettes[selectedState.styleKey];
+            document.getElementById('step3').dataset.resultStyle = selectedState.styleKey;
+            document.getElementById('resRoomText').innerText = selectedState.roomName;
+            document.getElementById('resStyleText').innerText = selectedState.styleName;
+            document.getElementById('wpName').innerText = wallpaper;
+            document.getElementById('lamName').innerText = laminate;
+            document.getElementById('designerNote').innerText = advice + ' ' + roomNotes[selectedState.roomKey];
+
+            goToStep(3);
+        }
+
+    </script>
+</body>
+</html>
