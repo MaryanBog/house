@@ -11,6 +11,21 @@
         .offer-form label { display: grid; gap: 4px; }
         .offer-form input { width: 100%; padding: 10px 12px; border: 1px solid #bbb; border-radius: 8px; }
         .offer-form .submit-btn { margin: 0; }
+        .exterior-page .visualization { position: relative; }
+        #photo-loading {
+            position: absolute;
+            inset: 0;
+            display: grid;
+            place-items: center;
+            pointer-events: none;
+        }
+        #photo-loading[hidden] { display: none; }
+        #photo-loading span {
+            padding: 9px 16px;
+            border-radius: 20px;
+            background: #292929;
+            color: #fff;
+        }
         #offer-close { margin-top: 8px; }
     </style>
 </head>
@@ -33,6 +48,7 @@
             
             <!-- Левая часть: Большое фото -->
             <div class="visualization">
+                <div id="photo-loading" role="status" hidden><span>Загрузка фото…</span></div>
                 <img id="house" src="assets/exterior/magnific_modern-twostorey-family-house_eI7cVhqdqL.png" width="2048" height="1143" alt="Дом с серой кровлей, белым водостоком и светлым фасадом">
             </div>
 
@@ -308,57 +324,92 @@
         return groupNames.map(name => panel.querySelector('input[name="' + name + '"]:checked'));
     }
 
-    function updatePreview() {
-        const key = selectedColors().map(input => input.value).join('/');
-        const match = photos[key];
-        const preview = match || original;
-        photo.src = preview.src;
-        photo.alt = preview.alt;
-        previewStatus.hidden = Boolean(match);
-        previewStatus.textContent = match
-            ? ''
-            : 'Фото для этого сочетания пока нет. Показан исходный вариант.';
+    const designButton = document.getElementById('design-variants');
+    const loadingStatus = document.getElementById('photo-loading');
+    const openEstimate = document.getElementById('open-estimate');
+    let lastDesignNumber = 0;
+    let designActive = false;
+    let previewRequest = 0;
+    let previewLoading = false;
+    let displayedSelection = { image: original.src, variant: 'gray/white/white' };
+    let displayedDescription = '';
+
+    function setPreviewLoading(loading) {
+        previewLoading = loading;
+        loadingStatus.hidden = !loading;
+        openEstimate.disabled = loading;
     }
 
-    const designButton = document.getElementById('design-variants');
-    let designNumber = 0;
-    let designRequest = 0;
-    let designLoading = false;
+    async function loadPhoto(src) {
+        const image = new Image();
+        image.src = src;
+        try {
+            await image.decode();
+            return true;
+        } catch {
+            return false;
+        }
+    }
 
-    function loadDesign(number) {
-        return new Promise(resolve => {
-            const image = new Image();
-            image.onload = () => resolve(image);
-            image.onerror = () => resolve(null);
-            image.src = 'assets/exterior/design/' + number + '.png';
-        });
+    function showPhoto(src, alt, variant, description) {
+        photo.setAttribute('src', src);
+        photo.alt = alt;
+        displayedSelection = { image: src, variant };
+        displayedDescription = description;
+    }
+
+    async function updatePreview() {
+        designActive = false;
+        const request = ++previewRequest;
+        const inputs = selectedColors();
+        const key = inputs.map(input => input.value).join('/');
+        const description = inputs.map(input => {
+            const title = input.closest('fieldset').querySelector('legend').textContent;
+            return title + ' — ' + input.dataset.label;
+        }).join(' · ');
+        const match = photos[key];
+        const preview = match || original;
+        setPreviewLoading(true);
+        const loaded = await loadPhoto(preview.src);
+        if (request !== previewRequest) return;
+        setPreviewLoading(false);
+
+        if (loaded) showPhoto(preview.src, preview.alt, key, description);
+        previewStatus.hidden = loaded && Boolean(match);
+        previewStatus.textContent = loaded
+            ? 'Фото для этого сочетания пока нет. Показан исходный вариант.'
+            : 'Не удалось загрузить фото. Показан предыдущий вариант.';
     }
 
     designButton.addEventListener('click', async () => {
-        if (designLoading) return;
-        designLoading = true;
-        const request = ++designRequest;
-        let number = designNumber + 1;
-        let image = await loadDesign(number);
-        if (!image && number > 1 && request === designRequest) {
+        if (previewLoading && designActive) return;
+        const request = ++previewRequest;
+        let number = designActive ? lastDesignNumber + 1 : lastDesignNumber || 1;
+        designActive = true;
+        setPreviewLoading(true);
+        let src = 'assets/exterior/design/' + number + '.png';
+        let loaded = await loadPhoto(src);
+        if (!loaded && number > 1 && request === previewRequest) {
             number = 1;
-            image = await loadDesign(number);
+            src = 'assets/exterior/design/1.png';
+            loaded = await loadPhoto(src);
         }
-        if (request !== designRequest) return;
-        designLoading = false;
-        if (!image) return;
+        if (request !== previewRequest) return;
+        setPreviewLoading(false);
+        if (!loaded) {
+            designActive = displayedSelection.variant.startsWith('design/');
+            previewStatus.hidden = false;
+            previewStatus.textContent = 'Не удалось загрузить дизайн-вариант.';
+            return;
+        }
 
-        designNumber = number;
-        photo.src = image.src;
-        photo.alt = 'Дизайн-вариант ' + number;
+        lastDesignNumber = number;
+        const description = 'Дизайн-вариант ' + number;
+        showPhoto(src, description, 'design/' + number, description);
+        previewStatus.hidden = true;
     });
 
-    panel.addEventListener('change', () => {
-        designRequest += 1;
-        designLoading = false;
-        designNumber = 0;
-        updatePreview();
-    });
+    panel.addEventListener('change', updatePreview);
     const offerForm = document.getElementById('offer-form');
     const offerSubmit = offerForm.querySelector('button[type="submit"]');
     const offerStatus = document.getElementById('offer-status');
@@ -366,17 +417,9 @@
 
     panel.addEventListener('submit', event => {
         event.preventDefault();
-        const inputs = selectedColors();
-        offerSelection = {
-            image: photo.getAttribute('src'),
-            variant: designNumber ? 'design/' + designNumber : inputs.map(input => input.value).join('/')
-        };
-        estimateSelection.textContent = designNumber
-            ? 'Дизайн-вариант ' + designNumber
-            : inputs.map(input => {
-                const title = input.closest('fieldset').querySelector('legend').textContent;
-                return title + ' — ' + input.dataset.label;
-            }).join(' · ');
+        if (previewLoading) return;
+        offerSelection = displayedSelection;
+        estimateSelection.textContent = displayedDescription;
         offerStatus.hidden = true;
         offerSubmit.disabled = false;
         estimate.showModal();
