@@ -394,22 +394,40 @@
     designButton.addEventListener('click', async () => {
         if (previewLoading && designActive) return;
         const request = ++previewRequest;
-        let number = designActive ? lastDesignNumber + 1 : lastDesignNumber || 1;
+        
+        // Начинаем со следующего номера, или с 1, если это первый клик
+        let number = designActive ? lastDesignNumber + 1 : 1;
         designActive = true;
         setPreviewLoading(true);
-        let src = 'assets/exterior/design/' + number + '.webp';
-        let loaded = await loadPhoto(src);
-        if (!loaded && number > 1 && request === previewRequest) {
-            number = 1;
-            src = 'assets/exterior/design/1.webp';
+        
+        let loaded = false;
+        let src = '';
+        let attempts = 0;
+        const maxNumber = 100; // Максимальный номер для проверки
+
+        while (attempts < maxNumber) {
+            if (number > maxNumber) {
+                number = 1; // Если дошли до 100, начинаем проверку сначала
+            }
+            
+            src = 'assets/exterior/design/' + number + '.webp';
             loaded = await loadPhoto(src);
+            
+            if (loaded && request === previewRequest) {
+                break; // Файл найден и загружен, выходим из цикла
+            }
+            
+            number++;
+            attempts++;
         }
+
         if (request !== previewRequest) return;
         setPreviewLoading(false);
+        
         if (!loaded) {
-            designActive = displayedSelection.variant.startsWith('design/');
+            designActive = false;
             previewStatus.hidden = false;
-            previewStatus.textContent = 'Не удалось загрузить дизайн-вариант.';
+            previewStatus.textContent = 'Нет доступных дизайн-вариантов.';
             return;
         }
 
