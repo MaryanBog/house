@@ -12,7 +12,7 @@ from pathlib import Path
 
 COPY_TO = "info@houseplus.by"
 EMAIL = re.compile(r"[A-Za-z0-9_+%'-]+(?:\.[A-Za-z0-9_+%'-]+)*@[A-Za-z0-9-]+(?:\.[A-Za-z0-9-]+)+")
-PHOTO = re.compile(r"assets/exterior/(?:[A-Za-z0-9_()-]+|design/[1-9][0-9]{0,5})\.png")
+PHOTO = re.compile(r"assets/exterior/(?:[A-Za-z0-9_()-]+|design/[1-9][0-9]{0,5})\.webp")
 ROOFS = dict(gray="Серый", graphite="Графит", brown="Шоколад", terra="Терракота")
 GUTTERS = dict(gray="Серый", white="Белый", brown="Коричневый")
 FACADES = dict(gray="Серый", sand="Песочный", white="Молочный")
@@ -36,7 +36,7 @@ def reserve(ip, recipient):
 
 def selection_text(variant, image):
     if variant.startswith("design/"):
-        if image == f"assets/exterior/{variant}.png":
+        if image == f"assets/exterior/{variant}.webp":
             return "Дизайн-вариант №" + variant.split("/")[1]
         raise ValueError("invalid design")
     roof, gutter, facade = variant.split("/")
@@ -58,7 +58,7 @@ def send_offer(email, phone, selection, image):
         "Мы свяжемся с вами, чтобы уточнить детали и подготовить предложение.\n\n"
         f"{selection}\n\nТелефон из заявки: {phone}\n\nХАУЗ.БЕЛ"
     )
-    message.add_attachment(image, maintype="image", subtype="png", filename="exterior.png")
+    message.add_attachment(image, maintype="image", subtype="webp", filename="exterior.webp")
     with smtplib.SMTP_SSL(
         os.environ["OFFER_SMTP_HOST"], int(os.environ.get("OFFER_SMTP_PORT", "465")),
         timeout=15, context=ssl.create_default_context(),
@@ -112,7 +112,7 @@ def application(environ, start_response):
     try:
         with photo.open("rb") as stream:
             attachment = stream.read(10 * 1024 * 1024 + 1)
-        if not attachment.startswith(b"\x89PNG\r\n\x1a\n") or len(attachment) > 10 * 1024 * 1024:
+        if not (attachment[:4] == b"RIFF" and attachment[8:12] == b"WEBP") or len(attachment) > 10 * 1024 * 1024:
             return reply("400 Bad Request", error="invalid_photo")
         refused = send_offer(email, phone, selection, attachment)
         if refused:
