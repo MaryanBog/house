@@ -68,6 +68,7 @@ def send_offer(email, phone, selection, image):
         headers={
             "Authorization": f"Bearer {api_key}",
             "Content-Type": "application/json",
+            "User-Agent": "house-offer-app/1.0",  # <-- ДОБАВЬ ЭТУ СТРОКУ
         },
         method="POST",
     )
