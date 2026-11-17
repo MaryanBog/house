@@ -3,10 +3,10 @@ import json
 import os
 import re
 import ssl
+import sys
 import threading
 import time
 import urllib.request
-from email.utils import formatdate, make_msgid
 from pathlib import Path
 
 COPY_TO = "m7823445@gmail.com"
@@ -43,7 +43,10 @@ def selection_text(variant, image):
     return f"Кровля — {ROOFS[roof]}\nВодосток — {GUTTERS[gutter]}\nФасад — {FACADES[facade]}"
 
 def send_offer(email, phone, selection, image):
-    api_key = os.environ["RESEND_API_KEY"]
+    api_key = os.environ.get("RESEND_API_KEY")
+    if not api_key:
+        raise RuntimeError("RESEND_API_KEY not found in environment")
+    
     sender = "onboarding@resend.dev"
     html_body = (
         "<h2>Новая заявка с сайта ХАУЗ.БЕЛ</h2>"
@@ -53,10 +56,11 @@ def send_offer(email, phone, selection, image):
     )
     payload = json.dumps({
         "from": sender,
-        "to": [email, COPY_TO],
-        "subject": "ХАУЗ.БЕЛ — ваш вариант отделки дома",
+        "to": ["m7823445@gmail.com"],
+        "subject": "ХАУЗ.БЕЛ — новая заявка",
         "html": html_body,
     }).encode()
+    
     req = urllib.request.Request(
         "https://api.resend.com/emails",
         data=payload,
@@ -111,7 +115,8 @@ def application(environ, start_response):
         if not PHOTO.fullmatch(image):
             raise ValueError("invalid photo")
         selection = selection_text(variant, image)
-    except (ValueError, KeyError, TypeError, AttributeError):
+    except Exception as e:
+        print(f"VALIDATION_ERROR: {type(e).__name__}: {e}", file=sys.stderr)
         return reply("400 Bad Request", error="invalid_request")
 
     root = Path(os.environ.get("OFFER_ASSET_ROOT", Path(__file__).parent)).resolve()
@@ -127,11 +132,10 @@ def application(environ, start_response):
         if not (attachment[:4] == b"RIFF" and attachment[8:12] == b"WEBP") or len(attachment) > 10 * 1024 * 1024:
             return reply("400 Bad Request", error="invalid_photo")
         refused = send_offer(email, phone, selection, attachment)
-        if refused:
+        if not refused:
             return reply("502 Bad Gateway", error="partial_delivery")
     except Exception as e:
-        import sys
-        print(f"RESEND_FAIL {type(e).__name__}: {e}", file=sys.stderr)
+        print(f"SEND_ERROR: {type(e).__name__}: {e}", file=sys.stderr)
         return reply("502 Bad Gateway", error="delivery_failed")
 
     return reply("200 OK", ok=True)
