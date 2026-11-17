@@ -6,6 +6,7 @@ import ssl
 import sys
 import threading
 import time
+import urllib.error
 import urllib.request
 from pathlib import Path
 
@@ -45,7 +46,7 @@ def selection_text(variant, image):
 def send_offer(email, phone, selection, image):
     api_key = os.environ.get("RESEND_API_KEY")
     if not api_key:
-        raise RuntimeError("RESEND_API_KEY not found in environment")
+        return "RESEND_API_KEY not found in environment"
     
     sender = "onboarding@resend.dev"
     html_body = (
@@ -71,8 +72,13 @@ def send_offer(email, phone, selection, image):
         method="POST",
     )
     ctx = ssl.create_default_context()
-    with urllib.request.urlopen(req, timeout=15, context=ctx) as resp:
-        return resp.status == 200
+    try:
+        with urllib.request.urlopen(req, timeout=15, context=ctx) as resp:
+            return None  # успех
+    except urllib.error.HTTPError as e:
+        return f"Resend error {e.code}: {e.read().decode(errors='replace')}"
+    except Exception as e:
+        return f"{type(e).__name__}: {e}"
 
 def application(environ, start_response):
     def reply(status, **body):
@@ -131,11 +137,13 @@ def application(environ, start_response):
             attachment = stream.read(10 * 1024 * 1024 + 1)
         if not (attachment[:4] == b"RIFF" and attachment[8:12] == b"WEBP") or len(attachment) > 10 * 1024 * 1024:
             return reply("400 Bad Request", error="invalid_photo")
-        refused = send_offer(email, phone, selection, attachment)
-        if not refused:
-            return reply("502 Bad Gateway", error="partial_delivery")
+        
+        err = send_offer(email, phone, selection, attachment)
+        if err:
+            return reply("502 Bad Gateway", error=err)
+            
     except Exception as e:
         print(f"SEND_ERROR: {type(e).__name__}: {e}", file=sys.stderr)
-        return reply("502 Bad Gateway", error="delivery_failed")
+        return reply("502 Bad Gateway", error=f"Exception: {e}")
 
     return reply("200 OK", ok=True)
