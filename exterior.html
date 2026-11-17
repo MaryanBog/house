@@ -499,7 +499,7 @@
         offerStatus.hidden = false;
         offerStatus.textContent = 'Отправляем письмо…';
         try {
-            const response = await fetch('/api/exterior-offer', {
+            const response = await fetch('https://house-2oga.onrender.com/api/exterior-offer', {
                 method: 'POST',
                 headers: {'Content-Type': 'application/json'},
                 body: JSON.stringify({...offerSelection, ...details})
