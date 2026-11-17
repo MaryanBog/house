@@ -16,6 +16,7 @@ PHOTO = re.compile(r"assets/exterior/(?:[A-Za-z0-9_()-]+|design/[1-9][0-9]{0,5})
 ROOFS = dict(gray="Серый", graphite="Графит", brown="Шоколад", terra="Терракота")
 GUTTERS = dict(gray="Серый", white="Белый", brown="Коричневый")
 FACADES = dict(gray="Серый", sand="Песочный", white="Молочный")
+
 limits = {}
 limit_lock = threading.Lock()
 
@@ -37,7 +38,7 @@ def reserve(ip, recipient):
 def selection_text(variant, image):
     if variant.startswith("design/"):
         if image == f"assets/exterior/{variant}.webp":
-            return "Дизайн-вариант №" + variant.split("/")[1]
+            return "Дизайн-вариант № " + variant.split("/")[1]
         raise ValueError("invalid design")
     roof, gutter, facade = variant.split("/")
     if "/design/" in image:
@@ -72,17 +73,26 @@ def application(environ, start_response):
         payload = json.dumps(body).encode()
         start_response(status, [
             ("Content-Type", "application/json"),
+            ("Access-Control-Allow-Origin", "*"),
             ("Cache-Control", "no-store"),
             ("Content-Length", str(len(payload))),
         ])
         return [payload]
 
+    if environ.get("REQUEST_METHOD") == "OPTIONS":
+        start_response("204 No Content", [
+            ("Access-Control-Allow-Origin", "*"),
+            ("Access-Control-Allow-Methods", "POST, OPTIONS"),
+            ("Access-Control-Allow-Headers", "Content-Type"),
+            ("Access-Control-Max-Age", "86400"),
+            ("Content-Length", "0"),
+        ])
+        return []
+
     if environ.get("PATH_INFO") != "/api/exterior-offer":
         return reply("404 Not Found", error="not_found")
     if environ.get("REQUEST_METHOD") != "POST":
         return reply("405 Method Not Allowed", error="method")
-    if environ.get("HTTP_SEC_FETCH_SITE") == "cross-site":
-        return reply("403 Forbidden", error="origin")
     if environ.get("CONTENT_TYPE", "").split(";")[0] != "application/json":
         return reply("415 Unsupported Media Type", error="format")
 
@@ -119,4 +129,5 @@ def application(environ, start_response):
             return reply("502 Bad Gateway", error="partial_delivery")
     except (OSError, smtplib.SMTPException, KeyError, ValueError):
         return reply("502 Bad Gateway", error="delivery_failed")
+
     return reply("200 OK", ok=True)
