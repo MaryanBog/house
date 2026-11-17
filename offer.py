@@ -10,7 +10,7 @@ from email.message import EmailMessage
 from email.utils import formatdate, make_msgid
 from pathlib import Path
 
-COPY_TO = "info@houseplus.by"
+COPY_TO = "m7823445@gmail.com"
 EMAIL = re.compile(r"[A-Za-z0-9_+%'-]+(?:\.[A-Za-z0-9_+%'-]+)*@[A-Za-z0-9-]+(?:\.[A-Za-z0-9-]+)+")
 PHOTO = re.compile(r"assets/exterior/(?:[A-Za-z0-9_()-]+|design/[1-9][0-9]{0,5})\.webp")
 ROOFS = dict(gray="Серый", graphite="Графит", brown="Шоколад", terra="Терракота")
@@ -19,7 +19,6 @@ FACADES = dict(gray="Серый", sand="Песочный", white="Молочны
 
 limits = {}
 limit_lock = threading.Lock()
-
 
 def reserve(ip, recipient):
     now = time.monotonic()
@@ -34,7 +33,6 @@ def reserve(ip, recipient):
             limits[key] = now + delay
         return True
 
-
 def selection_text(variant, image):
     if variant.startswith("design/"):
         if image == f"assets/exterior/{variant}.webp":
@@ -44,7 +42,6 @@ def selection_text(variant, image):
     if "/design/" in image:
         raise ValueError("invalid finish")
     return f"Кровля — {ROOFS[roof]}\nВодосток — {GUTTERS[gutter]}\nФасад — {FACADES[facade]}"
-
 
 def send_offer(email, phone, selection, image):
     sender = os.environ["OFFER_SMTP_FROM"]
@@ -66,7 +63,6 @@ def send_offer(email, phone, selection, image):
     ) as smtp:
         smtp.login(os.environ["OFFER_SMTP_USER"], os.environ["OFFER_SMTP_PASSWORD"])
         return smtp.send_message(message, to_addrs=list(dict.fromkeys((email, COPY_TO))))
-
 
 def application(environ, start_response):
     def reply(status, **body):
