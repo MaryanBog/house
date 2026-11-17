@@ -48,7 +48,7 @@ def send_offer(email, phone, selection, image):
     if not api_key:
         return "RESEND_API_KEY not found in environment"
     
-    sender = "onboarding@resend.dev"
+    sender = "support@lockrion.com"
     html_body = (
         "<h2>Новая заявка с сайта ХАУЗ.БЕЛ</h2>"
         f"<p><b>Телефон:</b> {phone}</p>"
