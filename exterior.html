@@ -512,8 +512,8 @@
             offerStatus.textContent = error.message === 'rate_limit'
                 ? 'Слишком много заявок. Попробуйте позже.'
                 : 'Не удалось отправить заявку. Попробуйте позже.';
-            offerSubmit.disabled = false;
         } finally {
+            offerSubmit.disabled = false; // <-- РАЗБЛОКИРУЕМ КНОПКУ ВСЕГДА
             offerSending = false;
         }
     });
