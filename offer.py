@@ -57,7 +57,7 @@ def send_offer(email, phone, selection, image):
     )
     payload = json.dumps({
         "from": sender,
-        "to": ["m7823445@gmail.com"],
+        "to": ["m7823445@gmail.com", email],
         "subject": "ХАУЗ.БЕЛ — новая заявка",
         "html": html_body,
     }).encode()
