@@ -129,7 +129,7 @@ def application(environ, start_response):
         refused = send_offer(email, phone, selection, attachment)
         if refused:
             return reply("502 Bad Gateway", error="partial_delivery")
-    except (OSError, Exception) as e:
+    except Exception as e:
         import sys
         print(f"RESEND_FAIL {type(e).__name__}: {e}", file=sys.stderr)
         return reply("502 Bad Gateway", error="delivery_failed")
