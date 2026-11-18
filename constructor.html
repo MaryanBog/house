@@ -1,42 +1,28 @@
 <!DOCTYPE html>
 <html lang="ru" class="scroll-smooth">
 <head>
-    <!-- Yandex.Metrika counter -->
-<script type="text/javascript">
-    (function(m,e,t,r,i,k,a){
-        m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
-        m[i].l=1*new Date();
-        for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
-        k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
-    })(window, document,'script','https://mc.yandex.ru/metrika/tag.js?id=114334468', 'ym');
-
-    ym(114334468, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLayer", referrer: document.referrer, url: location.href, accurateTrackBounce:true, trackLinks:true});
-</script>
-<noscript><div><img src="https://mc.yandex.ru/watch/114334468" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
-<!-- /Yandex.Metrika counter -->
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-YHMBLQK0NN"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-YHMBLQK0NN');
-    </script>
-    
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
+
     <!-- SEO ТЕГИ -->
     <title>Конструктор интерьера: подбор обоев и ламината | ХАУЗ.бел</title>
     <meta name="description" content="Интерактивный подбор обоев и ламината по стилю и помещению. Выберите гостиную, спальню или кухню и найдите идеальное сочетание материалов.">
-    
+
+    <!-- ОПТИМИЗАЦИЯ: шрифты и иконки без @import -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    <link rel="preconnect" href="https://images.unsplash.com">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Roboto:wght@300;400;500;700&family=Inter:wght@400;500;600;700;800&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" media="print" onload="this.media='all'">
+
     <link rel="stylesheet" href="styles.css">
 </head>
 <body class="interior-page min-h-screen flex flex-col">
 
     <!-- MAIN CONSTRUCTOR SECTION ONLY (БЕЗ ХЕДЕРА И ФУТЕРА) -->
     <main class="py-8 flex-grow max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8">
-        
+
         <div class="wizard-intro text-center max-w-3xl mx-auto mb-8">
             <h1 class="text-3xl sm:text-5xl font-black text-charcoal tracking-tight leading-tight">
                 Красивый выбор <span class="text-house-orange">без сложности</span>
@@ -47,7 +33,7 @@
         </div>
 
         <div class="bg-white rounded-3xl shadow-xl border border-gray-200/80 overflow-hidden">
-            
+
             <div class="wizard-header bg-charcoal text-white p-6 sm:p-8 border-b border-gray-800">
                 <div class="flex flex-col md:flex-row md:items-center justify-between gap-6">
                     <div>
@@ -75,11 +61,11 @@
             </div>
 
             <div class="wizard-content p-6 sm:p-10">
-                
+
                 <!-- STEP 1 -->
                 <div id="step1" class="tab-content space-y-8">
                     <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
-                        
+
                         <label class="option-card cursor-pointer">
                             <input type="radio" name="room" value="living" class="sr-only" checked onchange="selectRoom('living', 'Гостиная')">
                             <div class="bg-warm-card p-6 rounded-2xl border-2 border-gray-200 hover:border-gray-400 transition-all text-center relative group h-full flex flex-col justify-between items-center">
@@ -159,7 +145,7 @@
                 <!-- STEP 2 -->
                 <div id="step2" class="tab-content hidden">
                     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
-                        
+
                         <label class="option-card cursor-pointer">
                             <input type="radio" name="style" value="minimal" class="sr-only" checked onchange="selectStyle('minimal', 'Светлый минимализм')">
                             <div class="bg-warm-card p-6 rounded-2xl border-2 border-gray-200 hover:border-gray-400 transition-all relative group h-full flex flex-col justify-between">
@@ -167,7 +153,7 @@
                                     <i class="fa-solid fa-check"></i>
                                 </div>
                                 <div class="style-preview w-full rounded-xl overflow-hidden">
-                                    <img src="https://images.unsplash.com/photo-1598928506311-c55ded91a20c?auto=format&fit=crop&w=500&q=80" alt="" onerror="this.hidden = true" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                                    <img src="https://images.unsplash.com/photo-1598928506311-c55ded91a20c?auto=format&fit=crop&w=500&q=80" alt="" width="500" height="333" loading="lazy" decoding="async" onerror="this.hidden = true" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
                                 </div>
                                 <div>
                                     <h3 class="font-montserrat font-bold text-base text-charcoal mb-1">Светлый минимализм</h3>
@@ -183,7 +169,7 @@
                                     <i class="fa-solid fa-check"></i>
                                 </div>
                                 <div class="style-preview w-full rounded-xl overflow-hidden">
-                                    <img src="https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?auto=format&fit=crop&w=500&q=80" alt="" onerror="this.hidden = true" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                                    <img src="https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?auto=format&fit=crop&w=500&q=80" alt="" width="500" height="333" loading="lazy" decoding="async" onerror="this.hidden = true" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
                                 </div>
                                 <div>
                                     <h3 class="font-montserrat font-bold text-base text-charcoal mb-1">Теплый уют</h3>
@@ -199,7 +185,7 @@
                                     <i class="fa-solid fa-check"></i>
                                 </div>
                                 <div class="style-preview w-full rounded-xl overflow-hidden">
-                                    <img src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=1000&q=80" alt="" onerror="this.hidden = true" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                                    <img src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=1000&q=80" alt="" width="1000" height="667" loading="lazy" decoding="async" onerror="this.hidden = true" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
                                 </div>
                                 <div>
                                     <h3 class="font-montserrat font-bold text-base text-charcoal mb-1">Современный графит</h3>
@@ -215,7 +201,7 @@
                                     <i class="fa-solid fa-check"></i>
                                 </div>
                                 <div class="style-preview w-full rounded-xl overflow-hidden">
-                                    <img src="https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=500&q=80" alt="" onerror="this.hidden = true" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                                    <img src="https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=500&q=80" alt="" width="500" height="333" loading="lazy" decoding="async" onerror="this.hidden = true" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
                                 </div>
                                 <div>
                                     <h3 class="font-montserrat font-bold text-base text-charcoal mb-1">Эко-стиль</h3>
@@ -238,7 +224,7 @@
 
                 <!-- STEP 3 -->
                 <div id="step3" data-result-style="minimal" class="tab-content hidden space-y-8">
-                    
+
                     <div class="bg-warm-card p-4 rounded-2xl border border-gray-200 flex flex-wrap items-center justify-between gap-4">
                         <div class="flex items-center gap-4 text-xs font-montserrat font-bold text-charcoal uppercase">
                             <span><i class="fa-solid fa-house text-house-orange mr-1.5"></i> <span id="resRoomText">Гостиная</span></span>
@@ -252,7 +238,7 @@
 
                     <p class="text-sm">Иллюстрации оттенков и фактур. Наличие образцов уточняйте в магазине.</p>
                     <div class="grid lg:grid-cols-12 gap-8 items-stretch">
-                        
+
                         <div class="lg:col-span-5 bg-white rounded-3xl p-6 border-2 border-gray-200 hover:border-house-orange transition-all shadow-soft flex flex-col justify-between">
                             <div>
                                 <div class="flex justify-between items-center mb-3">
@@ -316,7 +302,7 @@
                         <a href="index.html#top" class="wizard-back border border-charcoal text-charcoal font-montserrat font-bold text-xs uppercase rounded-xl px-6 py-3 hover:bg-charcoal hover:text-white transition-all inline-flex items-center">
                             <i class="fa-solid fa-arrow-left mr-2"></i> На главную
                         </a>
-                        
+
                         <div class="flex gap-4">
                             <a href="tel:+375293979772" class="contact-link">Уточнить наличие образцов</a>
                             <button onclick="goToStep(2)" class="border border-charcoal text-charcoal hover:bg-charcoal hover:text-white font-montserrat font-bold text-xs uppercase px-6 py-3 rounded-xl transition-all">
@@ -330,6 +316,30 @@
             </div>
         </div>
     </main>
+
+    <!-- СКРИПТЫ ПЕРЕНЕСЕНЫ ВНИЗ: не блокируют отрисовку страницы -->
+    <!-- Yandex.Metrika counter -->
+    <script type="text/javascript">
+        (function(m,e,t,r,i,k,a){
+            m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+            m[i].l=1*new Date();
+            for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+            k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
+        })(window, document,'script','https://mc.yandex.ru/metrika/tag.js?id=114334468', 'ym');
+
+        ym(114334468, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLayer", referrer: document.referrer, url: location.href, accurateTrackBounce:true, trackLinks:true});
+    </script>
+    <noscript><div><img src="https://mc.yandex.ru/watch/114334468" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+    <!-- /Yandex.Metrika counter -->
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-YHMBLQK0NN"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-YHMBLQK0NN');
+    </script>
 
     <!-- SCRIPT -->
     <script>

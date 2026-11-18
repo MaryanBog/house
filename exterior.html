@@ -1,28 +1,6 @@
 <!DOCTYPE html>
 <html lang="ru" class="exterior-page">
 <head>
-    <!-- Yandex.Metrika counter -->
-<script type="text/javascript">
-    (function(m,e,t,r,i,k,a){
-        m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
-        m[i].l=1*new Date();
-        for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
-        k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
-    })(window, document,'script','https://mc.yandex.ru/metrika/tag.js?id=114334468', 'ym');
-
-    ym(114334468, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLayer", referrer: document.referrer, url: location.href, accurateTrackBounce:true, trackLinks:true});
-</script>
-<noscript><div><img src="https://mc.yandex.ru/watch/114334468" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
-<!-- /Yandex.Metrika counter -->
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-YHMBLQK0NN"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-YHMBLQK0NN');
-    </script>
-
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
@@ -30,7 +8,18 @@
     <title>Конструктор экстерьера: подбор цветов кровли и фасада | ХАУЗ.бел</title>
     <meta name="description" content="Сравните цвета кровли, водостока и фасада в визуальном конструкторе. Закажите расчет материалов в Молодечно.">
     
+    <!-- ОПТИМИЗАЦИЯ: Шрифты и иконки без блокировки @import -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Roboto:wght@300;400;500;700&family=Inter:wght@400;500;600;700;800&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" media="print" onload="this.media='all'">
+    
     <link rel="stylesheet" href="styles.css">
+    
+    <!-- ОПТИМИЗАЦИЯ LCP: Предзагрузка главного фото дома -->
+    <link rel="preload" as="image" href="assets/exterior/magnific_modern-twostorey-family-house_eI7cVhqdqL.webp" fetchpriority="high">
+
     <style>
         .exterior-home { display: inline-block; margin-bottom: 12px; color: inherit; text-decoration: underline; text-underline-offset: 4px; }
         .exterior-page #estimate-dialog {
@@ -94,7 +83,8 @@
             <!-- Левая часть: Большое фото -->
             <div class="visualization">
                 <div id="photo-loading" role="status" hidden><span>Загрузка фото…</span></div>
-                <img id="house" src="assets/exterior/magnific_modern-twostorey-family-house_eI7cVhqdqL.webp" width="2048" height="1143" alt="Дом с серой кровлей, белым водостоком и светлым фасадом">
+                <!-- ИСПРАВЛЕНО: добавлены fetchpriority и decoding -->
+                <img id="house" src="assets/exterior/magnific_modern-twostorey-family-house_eI7cVhqdqL.webp" width="2048" height="1143" alt="Дом с серой кровлей, белым водостоком и светлым фасадом" fetchpriority="high" decoding="async">
             </div>
 
             <!-- Правая часть: Панель -->
@@ -206,6 +196,30 @@
     </form>
     <p id="offer-status" role="status" hidden></p>
 </dialog>
+
+<!-- СКРИПТЫ ПЕРЕНЕСЕНЫ ВНИЗ: не блокируют отрисовку страницы -->
+<!-- Yandex.Metrika counter -->
+<script type="text/javascript">
+    (function(m,e,t,r,i,k,a){
+        m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+        m[i].l=1*new Date();
+        for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+        k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
+    })(window, document,'script','https://mc.yandex.ru/metrika/tag.js?id=114334468', 'ym');
+
+    ym(114334468, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLayer", referrer: document.referrer, url: location.href, accurateTrackBounce:true, trackLinks:true});
+</script>
+<noscript><div><img src="https://mc.yandex.ru/watch/114334468" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+<!-- /Yandex.Metrika counter -->
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-YHMBLQK0NN"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-YHMBLQK0NN');
+</script>
 
 <script>
     const panel = document.querySelector('.finish-panel');

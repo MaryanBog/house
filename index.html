@@ -1,28 +1,6 @@
 <!DOCTYPE html>
 <html lang="ru" class="scroll-smooth">
 <head>
-    <!-- Yandex.Metrika counter -->
-<script type="text/javascript">
-    (function(m,e,t,r,i,k,a){
-        m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
-        m[i].l=1*new Date();
-        for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
-        k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
-    })(window, document,'script','https://mc.yandex.ru/metrika/tag.js?id=114334468', 'ym');
-
-    ym(114334468, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLayer", referrer: document.referrer, url: location.href, accurateTrackBounce:true, trackLinks:true});
-</script>
-<noscript><div><img src="https://mc.yandex.ru/watch/114334468" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
-<!-- /Yandex.Metrika counter -->
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-YHMBLQK0NN"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-YHMBLQK0NN');
-    </script>
-    
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
@@ -30,7 +8,17 @@
     <title>Обои, ламинат и кровля в Молодечно | ХАУЗ.бел</title>
     <meta name="description" content="Шоу-рум в Молодечно: подбор обоев, ламината, кровли и фасадов. Визуальные конструкторы для выбора цвета. Привезем образцы на дом.">
     
+    <!-- ОПТИМИЗАЦИЯ: Шрифты и иконки без блокировки @import -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Roboto:wght@300;400;500;700&family=Inter:wght@400;500;600;700;800&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" media="print" onload="this.media='all'">
+    
     <link rel="stylesheet" href="styles.css">
+    
+    <!-- ОПТИМИЗАЦИЯ LCP: Предзагрузка главной картинки (ЗАМЕНИ ССЫЛКУ НА СВОЙ ЛОКАЛЬНЫЙ .webp) -->
+    <link rel="preload" as="image" href="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=1000&q=80" fetchpriority="high">
 </head>
 <body id="top" class="home-page min-h-screen flex flex-col justify-between selection:bg-house-orange selection:text-white">
 
@@ -111,8 +99,11 @@
                 <div>
                     <!-- Image Banner Header -->
                     <div class="home-card-image relative overflow-hidden bg-gray-900">
+                        <!-- ЗАМЕНИ src НА СВОЙ ЛОКАЛЬНЫЙ .webp ФАЙЛ -->
                         <img src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=1000&q=80" 
                              alt="Интерьер: Обои и Ламинат" 
+                             width="1000" height="667"
+                             fetchpriority="high" decoding="async"
                              class="bg-zoom-img w-full h-full object-cover opacity-90 group-hover:opacity-100">
                         <div class="absolute inset-0 bg-gradient-to-t from-charcoal via-charcoal/30 to-transparent"></div>
                         
@@ -143,8 +134,11 @@
                 <div>
                     <!-- Image Banner Header -->
                     <div class="home-card-image relative overflow-hidden bg-gray-900">
+                        <!-- ЗАМЕНИ src НА СВОЙ ЛОКАЛЬНЫЙ .webp ФАЙЛ -->
                         <img src="https://images.unsplash.com/photo-1613490493576-7fde63acd811?auto=format&fit=crop&w=1000&q=80" 
                              alt="Экстерьер: Кровля, Фасад, Заборы" 
+                             width="1000" height="667"
+                             loading="lazy" decoding="async"
                              class="bg-zoom-img w-full h-full object-cover opacity-90 group-hover:opacity-100">
                         <div class="absolute inset-0 bg-gradient-to-t from-charcoal via-charcoal/30 to-transparent"></div>
                         
@@ -179,7 +173,8 @@
                     <i class="fa-solid fa-store"></i>
                 </div>
                 <div>
-                    <h4 class="font-montserrat font-bold text-sm text-charcoal">Шоу-рум в Молодечно</h4>
+                    <!-- ИСПРАВЛЕНО: h4 заменен на h3 для правильной иерархии (было h2 -> h4) -->
+                    <h3 class="font-montserrat font-bold text-sm text-charcoal">Шоу-рум в Молодечно</h3>
                     <p class="text-xs text-charcoal/60 font-roboto mt-0.5">ул. Виленская 12, 2 этаж. Всё можно посмотреть вживую.</p>
                 </div>
             </div>
@@ -189,7 +184,7 @@
                     <i class="fa-solid fa-truck-ramp-box"></i>
                 </div>
                 <div>
-                    <h4 class="font-montserrat font-bold text-sm text-charcoal">Примерка на дому</h4>
+                    <h3 class="font-montserrat font-bold text-sm text-charcoal">Примерка на дому</h3>
                     <p class="text-xs text-charcoal/60 font-roboto mt-0.5">Привезем образцы обоев и ламината к вам на объект.</p>
                 </div>
             </div>
@@ -199,7 +194,7 @@
                     <i class="fa-solid fa-ruler-combined"></i>
                 </div>
                 <div>
-                    <h4 class="font-montserrat font-bold text-sm text-charcoal">Точный расчет</h4>
+                    <h3 class="font-montserrat font-bold text-sm text-charcoal">Точный расчет</h3>
                     <p class="text-xs text-charcoal/60 font-roboto mt-0.5">Инженерный расчет кровли и заборов без переплат.</p>
                 </div>
             </div>
@@ -222,6 +217,30 @@
             <p class="mt-2 sm:mt-0 font-montserrat font-bold text-gray-300">Красивый выбор без сложности</p>
         </div>
     </footer>
+
+    <!-- СКРИПТЫ ПЕРЕНЕСЕНЫ ВНИЗ: не блокируют отрисовку страницы -->
+    <!-- Yandex.Metrika counter -->
+    <script type="text/javascript">
+        (function(m,e,t,r,i,k,a){
+            m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+            m[i].l=1*new Date();
+            for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+            k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
+        })(window, document,'script','https://mc.yandex.ru/metrika/tag.js?id=114334468', 'ym');
+
+        ym(114334468, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLayer", referrer: document.referrer, url: location.href, accurateTrackBounce:true, trackLinks:true});
+    </script>
+    <noscript><div><img src="https://mc.yandex.ru/watch/114334468" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+    <!-- /Yandex.Metrika counter -->
+    
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-YHMBLQK0NN"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-YHMBLQK0NN');
+    </script>
 
 </body>
 </html>
