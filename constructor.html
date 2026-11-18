@@ -2,17 +2,21 @@
 <html lang="ru" class="scroll-smooth">
 <head>
     <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-YHMBLQK0NN"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-YHMBLQK0NN');
-</script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-YHMBLQK0NN"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-YHMBLQK0NN');
+    </script>
+    
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Интерьерный конструктор — ХАУЗ.БЕЛ</title>
+    
+    <!-- SEO ТЕГИ -->
+    <title>Конструктор интерьера: подбор обоев и ламината | ХАУЗ.бел</title>
+    <meta name="description" content="Интерактивный подбор обоев и ламината по стилю и помещению. Выберите гостиную, спальню или кухню и найдите идеальное сочетание материалов.">
+    
     <link rel="stylesheet" href="styles.css">
 </head>
 <body class="interior-page min-h-screen flex flex-col">
@@ -21,8 +25,6 @@
     <main class="py-8 flex-grow max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8">
         
         <div class="wizard-intro text-center max-w-3xl mx-auto mb-8">
-            <!-- Убрана ссылка, которая была тут -->
-
             <h1 class="text-3xl sm:text-5xl font-black text-charcoal tracking-tight leading-tight">
                 Красивый выбор <span class="text-house-orange">без сложности</span>
             </h1>
@@ -253,8 +255,6 @@
 
                                 <h3 class="font-montserrat font-bold text-xl text-charcoal mb-2" id="wpName">Светлые обои с льняной фактурой</h3>
                             </div>
-
-                            
                         </div>
 
                         <div class="lg:col-span-2 flex flex-col items-center justify-center py-4">
@@ -281,8 +281,6 @@
 
                                 <h3 class="font-montserrat font-bold text-xl text-charcoal mb-2" id="lamName">Выбеленный дуб</h3>
                             </div>
-
-                            
                         </div>
 
                     </div>
@@ -301,7 +299,6 @@
                         </div>
                     </div>
 
-                    <!-- ДОБАВЛЕНА КНОПКА "НА ГЛАВНУЮ" СЮДА -->
                     <div class="result-actions flex flex-wrap gap-4 items-center justify-between">
                         <a href="index.html#top" class="wizard-back border border-charcoal text-charcoal font-montserrat font-bold text-xs uppercase rounded-xl px-6 py-3 hover:bg-charcoal hover:text-white transition-all inline-flex items-center">
                             <i class="fa-solid fa-arrow-left mr-2"></i> На главную
@@ -321,7 +318,7 @@
         </div>
     </main>
 
-        <!-- SCRIPT -->
+    <!-- SCRIPT -->
     <script>
         let selectedState = { roomKey: 'living', roomName: 'Гостиная', styleKey: 'minimal', styleName: 'Светлый минимализм' };
 
@@ -368,7 +365,6 @@
 
             goToStep(3);
         }
-
     </script>
 </body>
 </html>
