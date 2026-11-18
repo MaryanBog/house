@@ -1,4 +1,5 @@
 """WSGI endpoint for the exterior offer form."""
+import base64
 import json
 import os
 import re
@@ -55,11 +56,21 @@ def send_offer(email, phone, selection, image):
         f"<p><b>Почта:</b> {email}</p>"
         f"<p><b>Выбор:</b><br>{selection.replace(chr(10), '<br>')}</p>"
     )
+    
+    # Кодируем фото в base64
+    encoded_photo = base64.b64encode(image).decode()
+    
     payload = json.dumps({
         "from": sender,
         "to": ["m7823445@gmail.com", email],
         "subject": "ХАУЗ.БЕЛ — новая заявка",
         "html": html_body,
+        "attachments": [
+            {
+                "filename": "preview.webp",
+                "content": encoded_photo
+            }
+        ]
     }).encode()
     
     req = urllib.request.Request(
@@ -68,7 +79,7 @@ def send_offer(email, phone, selection, image):
         headers={
             "Authorization": f"Bearer {api_key}",
             "Content-Type": "application/json",
-            "User-Agent": "house-offer-app/1.0",  # <-- ДОБАВЬ ЭТУ СТРОКУ
+            "User-Agent": "house-offer-app/1.0",
         },
         method="POST",
     )
