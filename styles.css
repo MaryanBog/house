@@ -1330,3 +1330,19 @@ a:focus-visible,button:focus-visible {outline:3px solid var(--brand-orange);outl
 .exterior-page .design-variants-btn:hover {
   background: #3d3d3d;
 }
+
+.hub-card__link {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    text-decoration: none;
+    color: inherit;
+}
+
+.hub-icon {
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 2.5;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
