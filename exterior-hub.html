@@ -1,21 +1,25 @@
 <!DOCTYPE html>
 <html lang="ru" class="scroll-smooth">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Выбор объекта для конструктора | ХАУЗ.бел</title>
-    
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Roboto:wght@300;400;500;700&display=swap">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" media="print" onload="this.media='all'">
-    
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Roboto:wght@300;400;500;700&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        media="print" onload="this.media='all'">
+
     <link rel="stylesheet" href="styles.css">
 </head>
+
 <body class="home-page min-h-screen flex flex-col justify-between selection:bg-house-orange selection:text-white">
 
     <main class="home-main flex-grow flex flex-col px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto w-full">
-        
+
         <!-- Кнопка "На главную" -->
         <div class="w-full max-w-6xl mx-auto mb-6 text-center">
             <a class="exterior-home" href="index.html#top">← На главную</a>
@@ -31,22 +35,28 @@
             </p>
         </div>
 
-        <!-- Сетка карточек (4 колонки) -->
-        <div class="home-directions grid md:grid-cols-2 lg:grid-cols-4 items-stretch max-w-7xl mx-auto w-full gap-6">
-            
+        <!-- Сетка карточек (3 колонки) -->
+        <div class="home-directions grid md:grid-cols-2 lg:grid-cols-3 items-stretch max-w-6xl mx-auto w-full gap-6">
+
             <!-- КАРТОЧКА 1 (Классический дом) -->
-            <div class="direction-card bg-white rounded-3xl overflow-hidden border-2 border-gray-200/80 hover:border-house-orange shadow-soft hover:shadow-card-hover flex flex-col justify-between group">
+            <div
+                class="direction-card bg-white rounded-3xl overflow-hidden border-2 border-gray-200/80 hover:border-house-orange shadow-soft hover:shadow-card-hover flex flex-col justify-between group">
                 <div>
                     <div class="home-card-image relative overflow-hidden bg-gray-900">
-                        <img src="assets/exterior/magnific_modern-twostorey-family-house_9ZuryCzNYZ.webp" alt="Классический дом" width="1000" height="667" fetchpriority="high" decoding="async" class="bg-zoom-img w-full h-full object-cover opacity-90 group-hover:opacity-100">
-                        <div class="absolute inset-0 bg-gradient-to-t from-charcoal via-charcoal/30 to-transparent"></div>
-                        
-                        <div class="absolute top-4 left-4 bg-charcoal-dark text-white border border-gray-700 text-[11px] font-montserrat font-extrabold uppercase px-3.5 py-1.5 rounded-lg shadow-md">
+                        <img src="assets/exterior/magnific_modern-twostorey-family-house_9ZuryCzNYZ.webp"
+                            alt="Классический дом" width="1000" height="667" fetchpriority="high" decoding="async"
+                            class="bg-zoom-img w-full h-full object-cover opacity-90 group-hover:opacity-100">
+                        <div class="absolute inset-0 bg-gradient-to-t from-charcoal via-charcoal/30 to-transparent">
+                        </div>
+
+                        <div
+                            class="absolute top-4 left-4 bg-charcoal-dark text-white border border-gray-700 text-[11px] font-montserrat font-extrabold uppercase px-3.5 py-1.5 rounded-lg shadow-md">
                             Кровля • Фасад • Водосток
                         </div>
-                        
+
                         <div class="absolute bottom-5 left-6 right-6 text-white">
-                            <h2 class="text-xl sm:text-2xl font-black font-montserrat leading-tight">КЛАССИЧЕСКИЙ ДОМ</h2>
+                            <h2 class="text-xl sm:text-2xl font-black font-montserrat leading-tight">КЛАССИЧЕСКИЙ ДОМ
+                            </h2>
                         </div>
                     </div>
                     <p class="home-card-summary text-sm font-roboto leading-relaxed">
@@ -54,7 +64,8 @@
                     </p>
                 </div>
                 <div class="home-card-action mt-auto">
-                    <a href="exterior-classic.html" class="home-card-link w-full font-montserrat font-bold text-xs uppercase tracking-widest rounded-2xl shadow-md transition-all duration-300 flex items-center justify-center gap-3">
+                    <a href="exterior-classic.html"
+                        class="home-card-link w-full font-montserrat font-bold text-xs uppercase tracking-widest rounded-2xl shadow-md transition-all duration-300 flex items-center justify-center gap-3">
                         <span>Выбрать цвета</span>
                         <i class="fa-solid fa-arrow-right transition-transform group-hover:translate-x-1"></i>
                     </a>
@@ -62,18 +73,24 @@
             </div>
 
             <!-- КАРТОЧКА 2 (Модерн) -->
-            <div class="direction-card bg-white rounded-3xl overflow-hidden border-2 border-gray-200/80 hover:border-house-orange shadow-soft hover:shadow-card-hover flex flex-col justify-between group">
+            <div
+                class="direction-card bg-white rounded-3xl overflow-hidden border-2 border-gray-200/80 hover:border-house-orange shadow-soft hover:shadow-card-hover flex flex-col justify-between group">
                 <div>
                     <div class="home-card-image relative overflow-hidden bg-gray-900">
-                        <img src="assets/new-webp/1.webp" alt="Дом в стиле модерн" width="1000" height="667" loading="lazy" decoding="async" class="bg-zoom-img w-full h-full object-cover opacity-90 group-hover:opacity-100">
-                        <div class="absolute inset-0 bg-gradient-to-t from-charcoal via-charcoal/30 to-transparent"></div>
-                        
-                        <div class="absolute top-4 left-4 bg-charcoal-dark text-white border border-gray-700 text-[11px] font-montserrat font-extrabold uppercase px-3.5 py-1.5 rounded-lg shadow-md">
+                        <img src="assets/new-webp/1.webp" alt="Дом в стиле модерн" width="1000" height="667"
+                            loading="lazy" decoding="async"
+                            class="bg-zoom-img w-full h-full object-cover opacity-90 group-hover:opacity-100">
+                        <div class="absolute inset-0 bg-gradient-to-t from-charcoal via-charcoal/30 to-transparent">
+                        </div>
+
+                        <div
+                            class="absolute top-4 left-4 bg-charcoal-dark text-white border border-gray-700 text-[11px] font-montserrat font-extrabold uppercase px-3.5 py-1.5 rounded-lg shadow-md">
                             Кровля • Фасад
                         </div>
-                        
+
                         <div class="absolute bottom-5 left-6 right-6 text-white">
-                            <h2 class="text-xl sm:text-2xl font-black font-montserrat leading-tight">ДОМ В СТИЛЕ МОДЕРН</h2>
+                            <h2 class="text-xl sm:text-2xl font-black font-montserrat leading-tight">ДОМ В СТИЛЕ МОДЕРН
+                            </h2>
                         </div>
                     </div>
                     <p class="home-card-summary text-sm font-roboto leading-relaxed">
@@ -81,7 +98,8 @@
                     </p>
                 </div>
                 <div class="home-card-action mt-auto">
-                    <a href="exterior-modern.html" class="home-card-link w-full font-montserrat font-bold text-xs uppercase tracking-widest rounded-2xl shadow-md transition-all duration-300 flex items-center justify-center gap-3">
+                    <a href="exterior-modern.html"
+                        class="home-card-link w-full font-montserrat font-bold text-xs uppercase tracking-widest rounded-2xl shadow-md transition-all duration-300 flex items-center justify-center gap-3">
                         <span>Выбрать цвета</span>
                         <i class="fa-solid fa-arrow-right transition-transform group-hover:translate-x-1"></i>
                     </a>
@@ -89,19 +107,25 @@
             </div>
 
             <!-- КАРТОЧКА 3 (Барнхаус) -->
-            <div class="direction-card bg-white rounded-3xl overflow-hidden border-2 border-gray-200/80 hover:border-house-orange shadow-soft hover:shadow-card-hover flex flex-col justify-between group">
+            <div
+                class="direction-card bg-white rounded-3xl overflow-hidden border-2 border-gray-200/80 hover:border-house-orange shadow-soft hover:shadow-card-hover flex flex-col justify-between group">
                 <div>
                     <div class="home-card-image relative overflow-hidden bg-gray-900">
                         <!-- Вставь сюда путь к первой картинке Барнхауса из новой папки (например, new-webp2/1.webp) -->
-                        <img src="assets/new-webp2/1.webp" alt="Дом в стиле Барнхаус" width="1000" height="667" loading="lazy" decoding="async" class="bg-zoom-img w-full h-full object-cover opacity-90 group-hover:opacity-100">
-                        <div class="absolute inset-0 bg-gradient-to-t from-charcoal via-charcoal/30 to-transparent"></div>
-                        
-                        <div class="absolute top-4 left-4 bg-charcoal-dark text-white border border-gray-700 text-[11px] font-montserrat font-extrabold uppercase px-3.5 py-1.5 rounded-lg shadow-md">
+                        <img src="assets/new-webp2/1.webp" alt="Дом в стиле Барнхаус" width="1000" height="667"
+                            loading="lazy" decoding="async"
+                            class="bg-zoom-img w-full h-full object-cover opacity-90 group-hover:opacity-100">
+                        <div class="absolute inset-0 bg-gradient-to-t from-charcoal via-charcoal/30 to-transparent">
+                        </div>
+
+                        <div
+                            class="absolute top-4 left-4 bg-charcoal-dark text-white border border-gray-700 text-[11px] font-montserrat font-extrabold uppercase px-3.5 py-1.5 rounded-lg shadow-md">
                             Кровля • Фасад
                         </div>
-                        
+
                         <div class="absolute bottom-5 left-6 right-6 text-white">
-                            <h2 class="text-xl sm:text-2xl font-black font-montserrat leading-tight">ДОМ В СТИЛЕ БАРНХАУС</h2>
+                            <h2 class="text-xl sm:text-2xl font-black font-montserrat leading-tight">ДОМ В СТИЛЕ
+                                БАРНХАУС</h2>
                         </div>
                     </div>
                     <p class="home-card-summary text-sm font-roboto leading-relaxed">
@@ -110,26 +134,59 @@
                 </div>
                 <div class="home-card-action mt-auto">
                     <!-- Ссылка на новый файл -->
-                    <a href="exterior-barn.html" class="home-card-link w-full font-montserrat font-bold text-xs uppercase tracking-widest rounded-2xl shadow-md transition-all duration-300 flex items-center justify-center gap-3">
+                    <a href="exterior-barn.html"
+                        class="home-card-link w-full font-montserrat font-bold text-xs uppercase tracking-widest rounded-2xl shadow-md transition-all duration-300 flex items-center justify-center gap-3">
                         <span>Выбрать цвета</span>
                         <i class="fa-solid fa-arrow-right transition-transform group-hover:translate-x-1"></i>
                     </a>
                 </div>
             </div>
 
-            <!-- КАРТОЧКА 4 (Заглушка - Заборы) -->
-            <div class="direction-card bg-white rounded-3xl overflow-hidden border-2 border-gray-200/80 shadow-soft flex flex-col justify-between group" style="cursor: default;">
+                        <!-- КАРТОЧКА 4 (Металлочерепица) -->
+            <div class="direction-card bg-white rounded-3xl overflow-hidden border-2 border-gray-200/80 hover:border-house-orange shadow-soft hover:shadow-card-hover flex flex-col justify-between group">
                 <div>
                     <div class="home-card-image relative overflow-hidden bg-gray-900">
-                        <img src="assets/exterior.webp" alt="Заборы и жалюзи" width="1000" height="667" loading="lazy" decoding="async" class="w-full h-full object-cover grayscale opacity-60">
+                        <img src="assets/roof-types/1.webp" alt="Конструктор металлочерепицы" width="1000" height="667" loading="lazy" decoding="async" class="bg-zoom-img w-full h-full object-cover opacity-90 group-hover:opacity-100">
                         <div class="absolute inset-0 bg-gradient-to-t from-charcoal via-charcoal/30 to-transparent"></div>
                         
-                        <div class="absolute top-4 left-4 bg-charcoal-dark text-white border border-gray-700 text-[11px] font-montserrat font-extrabold uppercase px-3.5 py-1.5 rounded-lg shadow-md opacity-80">
-                            Скоро
+                        <div class="absolute top-4 left-4 bg-charcoal-dark text-white border border-gray-700 text-[11px] font-montserrat font-extrabold uppercase px-3.5 py-1.5 rounded-lg shadow-md">
+                            Профиль • Цвет
                         </div>
                         
                         <div class="absolute bottom-5 left-6 right-6 text-white">
-                            <h2 class="text-xl sm:text-2xl font-black font-montserrat leading-tight">ЗАБОРЫ • ЖАЛЮЗИ</h2>
+                            <h2 class="text-xl sm:text-2xl font-black font-montserrat leading-tight">МЕТАЛЛОЧЕРЕПИЦА</h2>
+                        </div>
+                    </div>
+                    <p class="home-card-summary text-sm font-roboto leading-relaxed">
+                        Сравнение модульных профилей Морено, Германо и Нордо в разных цветах.
+                    </p>
+                </div>
+                <div class="home-card-action mt-auto">
+                    <a href="exterior-roof.html" class="home-card-link w-full font-montserrat font-bold text-xs uppercase tracking-widest rounded-2xl shadow-md transition-all duration-300 flex items-center justify-center gap-3">
+                        <span>Выбрать профиль</span>
+                        <i class="fa-solid fa-arrow-right transition-transform group-hover:translate-x-1"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- КАРТОЧКА 4 (Заглушка - Заборы) -->
+            <div class="direction-card bg-white rounded-3xl overflow-hidden border-2 border-gray-200/80 shadow-soft flex flex-col justify-between group"
+                style="cursor: default;">
+                <div>
+                    <div class="home-card-image relative overflow-hidden bg-gray-900">
+                        <img src="assets/exterior.webp" alt="Заборы и жалюзи" width="1000" height="667" loading="lazy"
+                            decoding="async" class="w-full h-full object-cover grayscale opacity-60">
+                        <div class="absolute inset-0 bg-gradient-to-t from-charcoal via-charcoal/30 to-transparent">
+                        </div>
+
+                        <div
+                            class="absolute top-4 left-4 bg-charcoal-dark text-white border border-gray-700 text-[11px] font-montserrat font-extrabold uppercase px-3.5 py-1.5 rounded-lg shadow-md opacity-80">
+                            Скоро
+                        </div>
+
+                        <div class="absolute bottom-5 left-6 right-6 text-white">
+                            <h2 class="text-xl sm:text-2xl font-black font-montserrat leading-tight">ЗАБОРЫ • ЖАЛЮЗИ
+                            </h2>
                         </div>
                     </div>
                     <p class="home-card-summary text-sm font-roboto leading-relaxed">
@@ -137,7 +194,8 @@
                     </p>
                 </div>
                 <div class="home-card-action mt-auto">
-                    <div class="home-card-link w-full font-montserrat font-bold text-xs uppercase tracking-widest rounded-2xl flex items-center justify-center gap-3 bg-gray-100 text-gray-400 shadow-none">
+                    <div
+                        class="home-card-link w-full font-montserrat font-bold text-xs uppercase tracking-widest rounded-2xl flex items-center justify-center gap-3 bg-gray-100 text-gray-400 shadow-none">
                         <span>В разработке</span>
                         <i class="fa-solid fa-clock"></i>
                     </div>
@@ -149,25 +207,28 @@
 
     <!-- Yandex.Metrika counter -->
     <script type="text/javascript">
-        (function(m,e,t,r,i,k,a){
-            m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
-            m[i].l=1*new Date();
-            for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
-            k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
-        })(window, document,'script','https://mc.yandex.ru/metrika/tag.js?id=114334468', 'ym');
+        (function (m, e, t, r, i, k, a) {
+            m[i] = m[i] || function () { (m[i].a = m[i].a || []).push(arguments) };
+            m[i].l = 1 * new Date();
+            for (var j = 0; j < document.scripts.length; j++) { if (document.scripts[j].src === r) { return; } }
+            k = e.createElement(t), a = e.getElementsByTagName(t)[0], k.async = 1, k.src = r, a.parentNode.insertBefore(k, a)
+        })(window, document, 'script', 'https://mc.yandex.ru/metrika/tag.js?id=114334468', 'ym');
 
-        ym(114334468, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLayer", referrer: document.referrer, url: location.href, accurateTrackBounce:true, trackLinks:true});
+        ym(114334468, 'init', { ssr: true, webvisor: true, clickmap: true, ecommerce: "dataLayer", referrer: document.referrer, url: location.href, accurateTrackBounce: true, trackLinks: true });
     </script>
-    <noscript><div><img src="https://mc.yandex.ru/watch/114334468" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+    <noscript>
+        <div><img src="https://mc.yandex.ru/watch/114334468" style="position:absolute; left:-9999px;" alt="" /></div>
+    </noscript>
     <!-- /Yandex.Metrika counter -->
 
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-YHMBLQK0NN"></script>
     <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-YHMBLQK0NN');
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-YHMBLQK0NN');
     </script>
 </body>
+
 </html>
