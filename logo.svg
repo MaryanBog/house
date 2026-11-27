@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" width="408px" height="288px" version="1.1" style="shape-rendering:geometricPrecision; text-rendering:geometricPrecision; image-rendering:optimizeQuality; fill-rule:evenodd; clip-rule:evenodd"
+viewBox="4137 10860 4079 2882"
+ xmlns:xlink="http://www.w3.org/1999/xlink">
+ <defs>
+  <style type="text/css">
+   <![CDATA[
+    .fil2 {fill:#FEFEFE}
+    .fil0 {fill:#EF7F1A}
+    .fil1 {fill:#B55E1E}
+   ]]>
+  </style>
+ </defs>
+ <g id="Слой_x0020_1">
+  <polygon class="fil0" points="5580.77,10860.79 6510.19,10860.79 5067.01,13741.21 4137.59,13741.21 "/>
+  <polygon class="fil0" points="6611.13,10860.79 7540.55,10860.79 6097.37,13741.21 5167.95,13741.21 "/>
+  <polygon class="fil1" points="7286.44,12208.62 8215.86,12208.62 7540.55,10860.79 7075.85,11788.29 "/>
+  <polygon class="fil2" points="5009.93,10860.79 4423.33,10860.79 4423.33,12935.24 5009.93,11764.46 "/>
+ </g>
+</svg>
