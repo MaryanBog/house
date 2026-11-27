@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="ru" class="exterior-page">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- SEO ТЕГИ -->
+    <title>Конструктор кровли: подбор профиля и цвета металлочерепицы | ХАУЗ.бел</title>
+    <meta name="description"
+        content="Сравните виды металлочерепицы (Морено, Германо, Нордо, СуперМонтеррей) и цвета кровли на готовом доме. Закажите расчет материалов в Молодечно.">
+
+    <link rel="preconnect" href="https://googleapis.com">
+    <link rel="preconnect" href="https://gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://cloudflare.com">
+    <link rel="stylesheet"
+        href="https://googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Roboto:wght@300;400;500;700&family=Inter:wght@400;500;600;700;800&display=swap">
+    <link rel="stylesheet" href="https://cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" media="print"
+        onload="this.media='all'">
+    <link rel="canonical" href="https://xn--80aaj9a.xn--90ais">
+    <link rel="stylesheet" href="styles.css">
+
+    <!-- Предзагрузка стартового фото -->
+    <link rel="preload" as="image" href="assets/roof-types/1.webp" fetchpriority="high">
+
+</head>
+
+<body>
+
+    <section class="hero-section">
+        <a class="exterior-home" href="exterior-hub.html">← Назад к выбору объекта</a>
+        <h1 class="hero-title">Металлочерепица: <span>конструктор</span></h1>
+        <p class="hero-subtitle">Сравните форму профиля и цвет кровли на готовом доме.</p>
+    </section>
+
+    <div class="main-container">
+        <div class="layout">
+
+            <!-- Левая часть: Большое фото -->
+            <div class="visualization">
+                <div id="photo-loading" role="status" hidden><span>Загрузка фото…</span></div>
+                <img id="house" src="assets/roof-types/1.webp" width="2048" height="1143"
+                    alt="Металлочерепица Морено, цвет Графит" fetchpriority="high" decoding="async">
+            </div>
+
+            <!-- Правая часть: Панель -->
+            <form class="controls finish-panel" aria-labelledby="finish-title">
+                <h2 id="finish-title">Параметры кровли</h2>
+                <button type="button" class="design-variants-btn" id="design-variants"
+                    aria-controls="house">Дизайн-варианты <span aria-hidden="true">→</span></button>
+
+                <!-- 1. Вид профиля -->
+                <fieldset class="finish-group finish-profile">
+                    <legend>Профиль металлочерепицы</legend>
+                    <div class="profile-options">
+                        <label class="finish-option">
+                            <input type="radio" name="profile" value="moreno" data-label="Морено" checked>
+                            <span class="profile-tile">
+                                <img src="assets/roof-types/moreno.webp" alt="Морено" class="profile-thumb">
+                                <span>Морено</span>
+                            </span>
+                        </label>
+                        <label class="finish-option">
+                            <input type="radio" name="profile" value="germano" data-label="Германо">
+                            <span class="profile-tile">
+                                <img src="assets/roof-types/germano.webp" alt="Германо" class="profile-thumb">
+                                <span>Германо</span>
+                            </span>
+                        </label>
+                        <label class="finish-option">
+                            <input type="radio" name="profile" value="nordo" data-label="Нордо">
+                            <span class="profile-tile">
+                                <img src="assets/roof-types/nordo.webp" alt="Нордо" class="profile-thumb">
+                                <span>Нордо</span>
+                            </span>
+                        </label>
+                    </div>
+                </fieldset>
+
+                <!-- 2. Цвет кровли -->
+                <fieldset class="finish-group finish-roof">
+                    <legend>Цвет кровли</legend>
+                    <div class="finish-options">
+                        <label class="finish-option"><input type="radio" name="color" value="graphite"
+                                data-label="Графит" checked><span class="finish-tile"><span class="finish-swatch"
+                                    style="--finish-color: #454956"></span><span>Графит</span></span></label>
+                        <label class="finish-option"><input type="radio" name="color" value="brown"
+                                data-label="Шоколад"><span class="finish-tile"><span class="finish-swatch"
+                                    style="--finish-color: #5c4033"></span><span>Шоколад</span></span></label>
+                        <label class="finish-option"><input type="radio" name="color" value="terra"
+                                data-label="Терракота"><span class="finish-tile"><span class="finish-swatch"
+                                    style="--finish-color: #9e4b47"></span><span>Терракота</span></span></label>
+                        <label class="finish-option"><input type="radio" name="color" value="gray"
+                                data-label="Серый"><span class="finish-tile"><span class="finish-swatch"
+                                    style="--finish-color: #99938c"></span><span>Серый</span></span></label>
+                    </div>
+                </fieldset>
+
+                <p class="finish-note" id="preview-status" role="status" hidden></p>
+                <button type="submit" class="submit-btn" id="open-estimate">Получить предложение</button>
+            </form>
+        </div>
+    </div>
+
+    <dialog id="estimate-dialog" aria-labelledby="estimate-title">
+        <h2 id="estimate-title">Получить предложение</h2>
+        <form id="offer-form" class="offer-form">
+            <label>Телефон <input name="phone" type="tel" autocomplete="tel" inputmode="tel"
+                    placeholder="+375 (29) 123-45-67" pattern="\+375 \([0-9]{2}\) [0-9]{3}-[0-9]{2}-[0-9]{2}"
+                    required></label>
+            <label>Электронная почта <input name="email" type="email" autocomplete="email"
+                    placeholder="name@example.com" maxlength="254" required></label>
+            <button class="submit-btn" type="submit">Отправить заявку</button>
+        </form>
+        <p id="offer-status" role="status" hidden></p>
+    </dialog>
+    <!-- Yandex.Metrika counter -->
+    <script type="text/javascript">
+        (function (m, e, t, r, i, k, a) {
+            m[i] = m[i] || function () { (m[i].a = m[i].a || []).push(arguments) };
+            m[i].l = 1 * new Date();
+            for (var j = 0; j < document.scripts.length; j++) { if (document.scripts[j].src === r) { return; } }
+            k = e.createElement(t), a = e.getElementsByTagName(t)[0], k.async = 1, k.src = r, a.parentNode.insertBefore(k, a)
+        })(window, document, 'script', 'https://yandex.ru', 'ym');
+        ym(114334468, 'init', { ssr: true, webvisor: true, clickmap: true, ecommerce: "dataLayer", referrer: document.referrer, url: location.href, accurateTrackBounce: true, trackLinks: true });
+    </script>
+    <noscript>
+        <div><img src="https://yandex.ru" style="position:absolute; left:-9999px;" alt="" /></div>
+    </noscript>
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://googletagmanager.com"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-YHMBLQK0NN');
+    </script>
+
+    <script>
+        const panel = document.querySelector('.finish-panel');
+        const photo = document.getElementById('house');
+        const previewStatus = document.getElementById('preview-status');
+        const estimate = document.getElementById('estimate-dialog');
+        const groupNames = ['profile', 'color'];
+
+        const original = { src: photo.getAttribute('src'), alt: 'Металлочерепица Морено, цвет Графит' };
+
+        const photos = {
+            'moreno/graphite': { src: 'assets/roof-types/1.webp', alt: 'Металлочерепица Морено, цвет Графит' },
+            'moreno/brown': { src: 'assets/roof-types/2.webp', alt: 'Металлочерепица Морено, цвет Шоколад' },
+            'moreno/terra': { src: 'assets/roof-types/3.webp', alt: 'Металлочерепица Морено, цвет Терракота' },
+            'moreno/gray': { src: 'assets/roof-types/4.webp', alt: 'Металлочерепица Морено, цвет Серый' },
+            'germano/graphite': { src: 'assets/roof-types/5.webp', alt: 'Металлочерепица Германо, цвет Графит' },
+            'germano/brown': { src: 'assets/roof-types/6.webp', alt: 'Металлочерепица Германо, цвет Шоколад' },
+            'germano/terra': { src: 'assets/roof-types/7.webp', alt: 'Металлочерепица Германо, цвет Терракота' },
+            'germano/gray': { src: 'assets/roof-types/8.webp', alt: 'Металлочерепица Германо, цвет Серый' },
+            'nordo/graphite': { src: 'assets/roof-types/9.webp', alt: 'Металлочерепица Нордо, цвет Графит' },
+            'nordo/brown': { src: 'assets/roof-types/10.webp', alt: 'Металлочерепица Нордо, цвет Шоколад' },
+            'nordo/terra': { src: 'assets/roof-types/11.webp', alt: 'Металлочерепица Нордо, цвет Терракота' },
+            'nordo/gray': { src: 'assets/roof-types/12.webp', alt: 'Металлочерепица Нордо, цвет Серый' },
+        };
+
+        function selectedColors() {
+            return groupNames.map(name => panel.querySelector('input[name="' + name + '"]:checked'));
+        }
+
+        const designButton = document.getElementById('design-variants');
+        const loadingStatus = document.getElementById('photo-loading');
+        const openEstimate = document.getElementById('open-estimate');
+        let lastDesignNumber = 0;
+        let designActive = false;
+        let previewRequest = 0;
+        let previewLoading = false;
+        let displayedSelection = { image: original.src, variant: 'moreno/graphite' };
+
+        function setPreviewLoading(loading) {
+            previewLoading = loading;
+            loadingStatus.hidden = !loading;
+            openEstimate.disabled = loading;
+        }
+
+        async function loadPhoto(src) {
+            const image = new Image();
+            image.src = src;
+            try {
+                await image.decode();
+                return true;
+            } catch {
+                return false;
+            }
+        }
+
+        function showPhoto(src, alt, variant) {
+            photo.setAttribute('src', src);
+            photo.alt = alt;
+            displayedSelection = { image: src, variant };
+        }
+
+        async function updatePreview() {
+            designActive = false;
+            const request = ++previewRequest;
+            const inputs = selectedColors();
+            const key = inputs.map(input => input.value).join('/');
+            const match = photos[key];
+            const preview = match || original;
+            setPreviewLoading(true);
+            const loaded = await loadPhoto(preview.src);
+            if (request !== previewRequest) return;
+            setPreviewLoading(false);
+
+            if (loaded) showPhoto(preview.src, preview.alt, key);
+            previewStatus.hidden = loaded && Boolean(match);
+            previewStatus.textContent = loaded ? 'Фото для этого сочетания пока нет. Показан исходный вариант.' : 'Не удалось загрузить фото.';
+        }
+
+        designButton.addEventListener('click', async () => {
+            if (previewLoading && designActive) return;
+            const request = ++previewRequest;
+            let number = designActive ? lastDesignNumber + 1 : 1;
+            designActive = true;
+            setPreviewLoading(true);
+            let loaded = false;
+            let src = '';
+            let attempts = 0;
+            const maxNumber = 100;
+
+            while (attempts < maxNumber) {
+                if (number > maxNumber) number = 1;
+                src = 'assets/roof-types/design/' + number + '.webp';
+                loaded = await loadPhoto(src);
+                if (loaded && request === previewRequest) break;
+                number++;
+                attempts++;
+            }
+
+            if (request !== previewRequest) return;
+            setPreviewLoading(false);
+            if (!loaded) {
+                designActive = false;
+                previewStatus.hidden = false;
+                previewStatus.textContent = 'Нет доступных дизайн-вариантов.';
+                return;
+            }
+            lastDesignNumber = number;
+            showPhoto(src, 'Дизайн-вариант ' + number, 'design/' + number);
+            previewStatus.hidden = true;
+        });
+
+        panel.addEventListener('change', updatePreview);
+
+        const offerForm = document.getElementById('offer-form');
+        const offerSubmit = offerForm.querySelector('button[type="submit"]');
+        const offerStatus = document.getElementById('offer-status');
+        const phone = offerForm.elements.phone;
+        let offerSelection;
+        let offerSending = false;
+
+        phone.addEventListener('input', () => {
+            let digits = phone.value.replace(/\D/g, '');
+            if (digits.startsWith('375')) digits = digits.slice(3);
+            else if (digits.length >= 11 && digits.startsWith('80')) digits = digits.slice(2);
+            digits = digits.slice(0, 9);
+            if (!digits) { phone.value = ''; return; }
+            let formatted = '+375 (' + digits.slice(0, 2);
+            if (digits.length > 2) formatted += ') ' + digits.slice(2, 5);
+            if (digits.length > 5) formatted += '-' + digits.slice(5, 7);
+            if (digits.length > 7) formatted += '-' + digits.slice(7, 9);
+            phone.value = formatted;
+        });
+
+        function outsideOffer(event) {
+            if (event.target !== estimate) return false;
+            const bounds = estimate.getBoundingClientRect();
+            return event.clientX < bounds.left || event.clientX >= bounds.right || event.clientY < bounds.top || event.clientY >= bounds.bottom;
+        }
+
+        let pressedOutside = false;
+        estimate.addEventListener('pointerdown', event => { pressedOutside = outsideOffer(event); });
+        estimate.addEventListener('click', event => {
+            if (pressedOutside && outsideOffer(event)) estimate.close();
+            pressedOutside = false;
+        });
+
+        panel.addEventListener('submit', event => {
+            event.preventDefault();
+            if (previewLoading) return;
+            offerSelection = displayedSelection;
+            if (!offerSending) { offerStatus.hidden = true; offerSubmit.disabled = false; }
+            estimate.showModal();
+        });
+
+        offerForm.addEventListener('submit', async event => {
+            event.preventDefault();
+            if (offerSending) return;
+            const details = Object.fromEntries(new FormData(offerForm));
+            offerSending = true;
+            offerSubmit.disabled = true;
+            offerStatus.hidden = false;
+            offerStatus.textContent = 'Отправляем письмо…';
+            try {
+                const response = await fetch('https://onrender.com', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ ...offerSelection, ...details })
+                });
+                const result = await response.json();
+                if (!response.ok || result.ok !== true) throw new Error(result.error);
+                offerForm.reset();
+                offerStatus.textContent = 'Письмо с выбранным фото отправлено.';
+            } catch (error) {
+                offerStatus.textContent = error.message === 'rate_limit' ? 'Слишком много заявок.' : 'Не удалось отправить заявку.';
+            } finally {
+                offerSubmit.disabled = false;
+                offerSending = false;
+            }
+        });
+
+        updatePreview();
+    </script>
+</body>
+
+</html>

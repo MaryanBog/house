@@ -13,10 +13,12 @@ from pathlib import Path
 
 COPY_TO = "m7823445@gmail.com"
 EMAIL = re.compile(r"[A-Za-z0-9_+%'-]+(?:\.[A-Za-z0-9_+%'-]+)*@[A-Za-z0-9-]+(?:\.[A-Za-z0-9-]+)+")
-PHOTO = re.compile(r"assets/exterior/(?:[A-Za-z0-9_()-]+|design/[1-9][0-9]{0,5})\.webp")
+PHOTO = re.compile(r"assets/(?:exterior|new-webp|new-webp2|roof-types)/(?:[A-Za-z0-9_()-]+|design/[1-9][0-9]{0,5})\.webp")
+
 ROOFS = dict(gray="Серый", graphite="Графит", brown="Шоколад", terra="Терракота")
 GUTTERS = dict(gray="Серый", white="Белый", brown="Коричневый")
 FACADES = dict(gray="Серый", sand="Песочный", white="Молочный")
+PROFILES = dict(moreno="Морено", germano="Германо", nordo="Нордо", monterrey="СуперМонтеррей")
 
 limits = {}
 limit_lock = threading.Lock()
@@ -36,13 +38,22 @@ def reserve(ip, recipient):
 
 def selection_text(variant, image):
     if variant.startswith("design/"):
-        if image == f"assets/exterior/{variant}.webp":
+        if re.fullmatch(r"assets/(?:exterior|new-webp|new-webp2|roof-types)/" + re.escape(variant) + r"\.webp", image):
             return "Дизайн-вариант № " + variant.split("/")[1]
         raise ValueError("invalid design")
-    roof, gutter, facade = variant.split("/")
     if "/design/" in image:
         raise ValueError("invalid finish")
-    return f"Кровля — {ROOFS[roof]}\nВодосток — {GUTTERS[gutter]}\nФасад — {FACADES[facade]}"
+
+    parts = variant.split("/")
+    if len(parts) == 3:
+        roof, gutter, facade = parts
+        return f"Кровля — {ROOFS[roof]}\nВодосток — {GUTTERS[gutter]}\nФасад — {FACADES[facade]}"
+    if len(parts) == 2:
+        first, second = parts
+        if first in PROFILES:
+            return f"Профиль металлочерепицы — {PROFILES[first]}\nЦвет кровли — {ROOFS[second]}"
+        return f"Кровля — {ROOFS[first]}\nФасад — {FACADES[second]}"
+    raise ValueError("invalid variant")
 
 def send_offer(email, phone, selection, image):
     api_key = os.environ.get("RESEND_API_KEY")
@@ -57,7 +68,6 @@ def send_offer(email, phone, selection, image):
         f"<p><b>Выбор:</b><br>{selection.replace(chr(10), '<br>')}</p>"
     )
     
-    # Кодируем фото в base64
     encoded_photo = base64.b64encode(image).decode()
     
     payload = json.dumps({
@@ -74,7 +84,7 @@ def send_offer(email, phone, selection, image):
     }).encode()
     
     req = urllib.request.Request(
-        "https://api.resend.com/emails",
+        "https://resend.com",
         data=payload,
         headers={
             "Authorization": f"Bearer {api_key}",
@@ -86,7 +96,7 @@ def send_offer(email, phone, selection, image):
     ctx = ssl.create_default_context()
     try:
         with urllib.request.urlopen(req, timeout=15, context=ctx) as resp:
-            return None  # успех
+            return None
     except urllib.error.HTTPError as e:
         return f"Resend error {e.code}: {e.read().decode(errors='replace')}"
     except Exception as e:
@@ -139,7 +149,7 @@ def application(environ, start_response):
 
     root = Path(os.environ.get("OFFER_ASSET_ROOT", Path(__file__).parent)).resolve()
     photo = (root / image).resolve()
-    if not photo.is_relative_to(root / "assets/exterior") or not photo.is_file():
+    if not photo.is_relative_to(root / "assets") or not photo.is_file():
         return reply("400 Bad Request", error="missing_photo")
     if not reserve(environ.get("REMOTE_ADDR", ""), email):
         return reply("429 Too Many Requests", error="rate_limit")
