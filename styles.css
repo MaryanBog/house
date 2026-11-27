@@ -673,7 +673,6 @@
   .lg\:text-7xl { font-size: 4.5rem; line-height: 1; }
 }
 
-
 body {
     font-family: 'Roboto', sans-serif;
     color: #2D2D2D;
@@ -1341,54 +1340,46 @@ a:focus-visible,button:focus-visible {outline:3px solid var(--brand-orange);outl
     color: inherit;
 }
 
-.hub-icon {
-    fill: none;
-    stroke: currentColor;
-    stroke-width: 2.5;
-    stroke-linecap: round;
-    stroke-linejoin: round;
+/* === Конструктор кровли и оверлей загрузки === */
+.exterior-home {
+    display: inline-block;
+    margin-bottom: 12px;
+    color: inherit;
+    text-decoration: underline;
+    text-underline-offset: 4px;
 }
 
-/* Карточки выбора профиля металлочерепицы */
-.exterior-page .profile-options {
-    display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 8px;
+.exterior-page .hero-section {
+    max-width: 1100px;
 }
 
-.exterior-page .profile-tile {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    padding: 10px 6px;
-    border: 1.5px solid #dcd8d3;
-    border-radius: 10px;
-    background: var(--white);
-    color: var(--text-main);
-    cursor: pointer;
-    transition: all 0.2s ease;
-    font-size: 13px;
-    font-weight: 600;
-    min-height: 44px;
-}
-
-.exterior-page .finish-option input:checked + .profile-tile {
-    border-color: var(--brand-orange);
-    background: #fff7f3;
-    color: var(--brand-orange);
-    box-shadow: 0 2px 8px rgba(224, 107, 43, 0.15);
-}
-
-.exterior-page .finish-option input:focus-visible + .profile-tile {
-    outline: 2px solid var(--brand-ink);
-    outline-offset: 2px;
-}
-
-/* Растягиваем фото на всю ширину блока без серых полос */
 .exterior-page .visualization {
+    position: relative;
     background-color: transparent;
+}
+
+.exterior-page #photo-loading {
+    position: absolute;
+    inset: 0;
+    display: grid;
+    place-items: center;
+    pointer-events: none;
+    background: rgb(0 0 0 / 42%);
+    border-radius: inherit;
+    z-index: 10;
+}
+
+.exterior-page #photo-loading[hidden] {
+    display: none;
+}
+
+.exterior-page #photo-loading span {
+    padding: 9px 16px;
+    border-radius: 20px;
+    background: #292929;
+    color: #fff;
+    font-size: 14px;
+    font-weight: 500;
 }
 
 @media (min-width: 1025px) {
@@ -1401,9 +1392,29 @@ a:focus-visible,button:focus-visible {outline:3px solid var(--brand-orange);outl
     }
 }
 
+.exterior-page .profile-options {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 8px;
+}
+
 .exterior-page .profile-tile {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     gap: 6px;
+    text-align: center;
     padding: 8px 4px;
+    border: 1.5px solid #dcd8d3;
+    border-radius: 10px;
+    background: var(--white);
+    color: var(--text-main);
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-size: 13px;
+    font-weight: 600;
+    min-height: 44px;
 }
 
 .exterior-page .profile-thumb {
@@ -1413,14 +1424,14 @@ a:focus-visible,button:focus-visible {outline:3px solid var(--brand-orange);outl
     mix-blend-mode: multiply;
 }
 
-.exterior-page .hero-section {
-    max-width: 1100px;
+.exterior-page .finish-option input:checked + .profile-tile {
+    border-color: var(--brand-orange);
+    background: #fff7f3;
+    color: var(--brand-orange);
+    box-shadow: 0 2px 8px rgba(224, 107, 43, 0.15);
 }
 
-.exterior-home {
-    display: inline-block;
-    margin-bottom: 12px;
-    color: inherit;
-    text-decoration: underline;
-    text-underline-offset: 4px;
+.exterior-page .finish-option input:focus-visible + .profile-tile {
+    outline: 2px solid var(--brand-ink);
+    outline-offset: 2px;
 }
